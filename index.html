@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrüfDex — DGUV-V3-Prüfung mobil & prüffest</title>
+  <meta name="description" content="PrüfDex: Elektrogeräte per QR erfassen, DGUV-V3 / VDE 0701-0702 am Handy abhaken — prüffestes PDF-Protokoll, Prüfplakette und automatische Fristen-Erinnerung. Für Elektro-Handwerk und Prüfdienstleister." />
+  <meta name="robots" content="all" />
+  <meta name="theme-color" content="#0B1220" />
+  <meta property="og:title" content="PrüfDex — DGUV-V3-Prüfung mobil & prüffest" />
+  <meta property="og:description" content="Gerät scannen, prüfen, fertig: prüffestes Protokoll + Plakette + Fristen-Automatik fürs Elektro-Handwerk." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #0B1220; --surface: #131C2E; --surface2: #0F1726; --border: #27334A;
+      --text: #E7ECF3; --muted: #9AA7BD; --blue: #2563EB; --blue2: #3B82F6;
+      --green: #22C55E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(900px 480px at 50% -120px, rgba(37,99,235,.20), transparent 70%),
+        radial-gradient(600px 360px at 90% 120px, rgba(59,130,246,.10), transparent 70%),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    a { color: #8FB4FF; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header { padding: 22px 0; display: flex; align-items: center; gap: 12px; }
+    .logo { width: 38px; height: 38px; border-radius: 10px; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+    .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+    .nav-spacer { flex: 1; }
+    .nav a { color: var(--muted); font-size: 14px; margin-left: 20px; }
+    @media (max-width: 640px) { .nav { display: none; } }
+
+    /* Hero */
+    .hero { padding: 48px 0 36px; text-align: center; }
+    .badge {
+      display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .3px;
+      color: #BFD3FF; background: rgba(37,99,235,.14); border: 1px solid rgba(59,130,246,.35);
+      padding: 6px 12px; border-radius: 999px; margin-bottom: 22px;
+    }
+    h1 {
+      font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1.12;
+      max-width: 760px; margin: 0 auto 18px;
+    }
+    h1 .hl { color: var(--blue2); }
+    .sub { font-size: 18px; color: var(--muted); max-width: 600px; margin: 0 auto 30px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; font-size: 15px; font-weight: 600; padding: 13px 24px;
+      border-radius: 11px; border: 1px solid transparent; cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue2); text-decoration: none; }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--blue2); text-decoration: none; }
+    .hero-note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+    @media (max-width: 640px) { h1 { font-size: 32px; } .sub { font-size: 16px; } }
+
+    /* Sections */
+    section { padding: 44px 0; }
+    .eyebrow { color: var(--blue2); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+    h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; }
+    .lead { color: var(--muted); font-size: 16px; max-width: 620px; margin-bottom: 28px; }
+
+    /* Steps / Features grid */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+      padding: 22px 20px;
+    }
+    .card .ico { width: 40px; height: 40px; border-radius: 10px; background: rgba(37,99,235,.16); display: grid; place-items: center; margin-bottom: 14px; font-size: 20px; }
+    .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 7px; }
+    .card p { color: var(--muted); font-size: 14.5px; }
+    .step-n { color: var(--blue2); font-weight: 800; font-size: 13px; letter-spacing: 1px; }
+
+    /* Cross-Promo: echtes App-Icon links, Name + Text mittig, Button rechts */
+    .promo-list { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 720px; }
+    .promo {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      padding: 14px 16px;
+    }
+    .promo-ico {
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0; overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .promo-ico img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .promo-body { flex: 1; min-width: 180px; }
+    .promo-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 3px; color: var(--text); }
+    .promo-body p { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+    .promo-body h3 .soon { font-size: 10.5px; font-weight: 700; color: #BFD3FF; background: rgba(37,99,235,.18); padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
+    /* toter Platzhalter-Button — Store-Listing folgt */
+    .promo-cta {
+      flex-shrink: 0; font-size: 13.5px; font-weight: 600; color: var(--muted);
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 9px 16px; cursor: default; user-select: none; white-space: nowrap;
+    }
+
+    /* Why list */
+    .why { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+    @media (max-width: 700px) { .why { grid-template-columns: 1fr; } }
+    .why-item { display: flex; gap: 12px; align-items: flex-start; }
+    .check { color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .why-item b { font-weight: 700; }
+    .why-item span { color: var(--muted); font-size: 14.5px; }
+
+    /* Pricing */
+    .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 680px; }
+    @media (max-width: 700px) { .price-grid { grid-template-columns: 1fr; } }
+    .plan { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; }
+    .plan.pro { border-color: var(--blue2); box-shadow: 0 0 0 1px rgba(59,130,246,.4); }
+    .plan .name { font-weight: 700; font-size: 16px; }
+    .plan .amount { font-size: 34px; font-weight: 800; letter-spacing: -1px; margin: 10px 0 4px; }
+    .plan .amount small { font-size: 15px; font-weight: 600; color: var(--muted); }
+    .plan ul { list-style: none; margin-top: 16px; }
+    .plan li { color: var(--muted); font-size: 14.5px; padding: 5px 0 5px 22px; position: relative; }
+    .plan li::before { content: "✓"; color: var(--green); position: absolute; left: 0; font-weight: 800; }
+    .plan .tag { display: inline-block; font-size: 11px; font-weight: 700; color: #BFD3FF; background: rgba(37,99,235,.18); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+
+    /* CTA band */
+    .band { background: linear-gradient(135deg, #1b2c4d, #101a2c); border: 1px solid rgba(59,130,246,.35); border-radius: 20px; padding: 44px 28px; text-align: center; box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+    .band h2 { margin-bottom: 10px; }
+    .band p { color: var(--muted); margin-bottom: 22px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); margin-top: 30px; padding: 28px 0 48px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .foot .muted { color: var(--muted); font-size: 13px; }
+    .foot a { color: var(--muted); font-size: 13px; margin-left: 18px; }
+
+    .disclaimer { color: var(--muted); font-size: 12.5px; max-width: 760px; margin: 20px auto 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <span class="logo"><img src="assets/pruefdex-icon.png" alt="PrüfDex" /></span>
+      <span class="brand">PrüfDex</span>
+      <span class="nav-spacer"></span>
+      <nav class="nav">
+        <a href="#so">So funktioniert's</a>
+        <a href="#warum">Warum PrüfDex</a>
+        <a href="#preise">Preise</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- HERO -->
+  <div class="wrap">
+    <div class="hero">
+      <span class="badge">DGUV V3 · VDE 0701-0702 · BetrSichV</span>
+      <h1>Geräteprüfung am Handy — <span class="hl">prüffest in unter einer Minute</span>.</h1>
+      <p class="sub">
+        Elektrogerät per QR scannen, Sicht- und Messprüfung abhaken — PrüfDex erzeugt das
+        prüffeste DGUV-V3-Protokoll samt Prüfplakette und erinnert automatisch an die nächste Frist.
+      </p>
+      <div class="cta-row">
+        <a href="#preise" class="btn btn-primary">Kostenlos starten</a>
+        <a href="#so" class="btn btn-ghost">So funktioniert's</a>
+      </div>
+      <p class="hero-note">Papierordner & Excel-Listen raus. Mobil & rechtssicher rein.</p>
+    </div>
+  </div>
+
+  <!-- SO FUNKTIONIERT'S -->
+  <section id="so">
+    <div class="wrap">
+      <div class="eyebrow">So funktioniert's</div>
+      <h2>Vier Schritte, ein Protokoll</h2>
+      <p class="lead">Kein Schulungsaufwand. Der Ablauf folgt genau dem, was die Prüfung verlangt.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="ico">📷</div>
+          <div class="step-n">SCHRITT 1</div>
+          <h3>Scannen</h3>
+          <p>Gerät per QR-Etikett öffnen oder neu anlegen — Bezeichnung, Typ, Seriennummer, Standort.</p>
+        </div>
+        <div class="card">
+          <div class="ico">✅</div>
+          <div class="step-n">SCHRITT 2</div>
+          <h3>Prüfen</h3>
+          <p>Sichtprüfung abhaken, Messwerte eintragen (Schutzleiter-, Isolationswiderstand, Ersatzableitstrom).</p>
+        </div>
+        <div class="card">
+          <div class="ico">📄</div>
+          <div class="step-n">SCHRITT 3</div>
+          <h3>Protokoll</h3>
+          <p>Prüffestes PDF mit allen Pflichtangaben plus druckbare Prüfplakette mit QR-Code — automatisch.</p>
+        </div>
+        <div class="card">
+          <div class="ico">🔔</div>
+          <div class="step-n">SCHRITT 4</div>
+          <h3>Frist im Blick</h3>
+          <p>Nächster Prüftermin wird berechnet. Anstehende und überfällige Geräte auf einen Blick.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM -->
+  <section id="warum">
+    <div class="wrap">
+      <div class="eyebrow">Warum PrüfDex</div>
+      <h2>Für den Betrieb, nicht für die IT-Abteilung</h2>
+      <p class="lead">Gemacht für Elektro-Handwerk und Prüfdienstleister, die schnell und sauber dokumentieren müssen — ohne überladene Enterprise-Software.</p>
+      <div class="why">
+        <div class="why-item"><span class="check">✓</span><span><b>Pflicht erfüllt:</b> Protokolle mit allen DGUV-V3-/VDE-Pflichtangaben — lückenlos und prüffest.</span></div>
+        <div class="why-item"><span class="check">✓</span><span><b>Mobil-first:</b> Die ganze Prüfung läuft am Handy. Kein Laptop, kein Papier auf der Baustelle.</span></div>
+        <div class="why-item"><span class="check">✓</span><span><b>QR-Plaketten:</b> Jedes Gerät bekommt sein Etikett — nächste Prüfung ist ein Scan entfernt.</span></div>
+        <div class="why-item"><span class="check">✓</span><span><b>Mandantenfähig:</b> Mehrere Kunden / Standorte sauber getrennt — ideal für Prüfdienstleister.</span></div>
+        <div class="why-item"><span class="check">✓</span><span><b>Fristen-Automatik:</b> Nie wieder eine Wiederholungsprüfung übersehen.</span></div>
+        <div class="why-item"><span class="check">✓</span><span><b>Schnell:</b> Routine-Gerät in unter einer Minute dokumentiert.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREISE -->
+  <section id="preise">
+    <div class="wrap">
+      <div class="eyebrow">Preise</div>
+      <h2>Klein anfangen, mitwachsen</h2>
+      <p class="lead">Free zum Ausprobieren, Pro für den produktiven Einsatz. Keine Vertragsbindung.</p>
+      <div class="price-grid">
+        <div class="plan">
+          <div class="name">Free</div>
+          <div class="amount">€0</div>
+          <div class="muted" style="color:var(--muted);font-size:13px;">zum Testen</div>
+          <ul>
+            <li>Bis zu 10 Geräte</li>
+            <li>Bis zu 10 Prüfungen</li>
+            <li>PDF-Protokoll & Plakette</li>
+            <li>Fristen-Übersicht</li>
+          </ul>
+        </div>
+        <div class="plan pro">
+          <div class="name">Pro <span class="tag">Empfohlen</span></div>
+          <div class="amount">€19<small> / Monat</small></div>
+          <div class="muted" style="color:var(--muted);font-size:13px;">Jahresrabatt verfügbar</div>
+          <ul>
+            <li>Unbegrenzt Geräte & Prüfungen</li>
+            <li>Eigenes Branding im Protokoll</li>
+            <li>Mehrere Mandanten / Standorte</li>
+            <li>Fristen-Erinnerungen</li>
+            <li>Voller PDF-Export</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted" style="font-size:13px;margin-top:14px;">Preise vorläufig, Feinjustierung nach Feedback. Bundle-Rabatt für Schutzheld-Kunden geplant.</p>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section>
+    <div class="wrap">
+      <div class="band">
+        <h2>Bereit, den Papierordner abzulösen?</h2>
+        <p>Lege dein erstes Gerät an und erstelle in Minuten dein erstes prüffestes Protokoll.</p>
+        <a href="#" class="btn btn-primary">App holen</a>
+      </div>
+      <p class="disclaimer">
+        PrüfDex unterstützt bei der Dokumentation der Prüfung. Die fachgerechte Durchführung der
+        Prüfung sowie die Eingabe korrekter Mess- und Sichtergebnisse obliegen der prüfenden
+        Elektrofachkraft. PrüfDex erfindet keine Messwerte.
+      </p>
+    </div>
+  </section>
+
+  <!-- MEHR VON UNS (Cross-Promo) -->
+  <section id="mehr">
+    <div class="wrap">
+      <div class="eyebrow">Mehr von uns</div>
+      <h2>Eine Familie fürs Handwerk</h2>
+      <p class="lead">PrüfDex ist Teil einer Reihe schlanker Apps für Betriebe. Compliance aus einer Hand — besonders stark im Bundle mit Schutzheld.</p>
+      <div class="promo-list">
+        <div class="promo">
+          <span class="promo-ico"><img src="assets/schutzheld-icon.png" alt="Schutzheld" /></span>
+          <span class="promo-body">
+            <h3>Schutzheld <span class="soon">Bundle</span></h3>
+            <p>KI-gestützte Arbeitsschutz-Unterweisung mit prüffestem Nachweis und Gefährdungsbeurteilung.</p>
+          </span>
+          <span class="promo-cta">Zur App</span>
+        </div>
+        <div class="promo">
+          <span class="promo-ico"><img src="assets/craftlog-icon.png" alt="CraftLog" /></span>
+          <span class="promo-body">
+            <h3>CraftLog <span class="soon">Bald</span></h3>
+            <p>Die App für Handwerksbetriebe — Aufträge, Zeit und Doku an einem Ort.</p>
+          </span>
+          <span class="promo-cta">Zur App</span>
+        </div>
+        <div class="promo">
+          <span class="promo-ico"><img src="assets/baumdex-icon.png" alt="BaumDex" /></span>
+          <span class="promo-body">
+            <h3>BaumDex <span class="soon">Bald</span></h3>
+            <p>Baumkataster & Verkehrssicherung — Kontrollen lückenlos und rechtssicher dokumentieren.</p>
+          </span>
+          <span class="promo-cta">Zur App</span>
+        </div>
+        <div class="promo">
+          <span class="promo-ico"><img src="assets/routelog-icon.png" alt="RouteLog" /></span>
+          <span class="promo-body">
+            <h3>RouteLog <span class="soon">Bald</span></h3>
+            <p>Automatisches Fahrtenbuch — Fahrten erkennen und Kilometer rechtssicher dokumentieren.</p>
+          </span>
+          <span class="promo-cta">Zur App</span>
+        </div>
+        <div class="promo">
+          <span class="promo-ico"><img src="assets/archio-icon.png" alt="Archio" /></span>
+          <span class="promo-body">
+            <h3>Archio <span class="soon">Bald</span></h3>
+            <p>Dokumente sicher archivieren und jederzeit wiederfinden.</p>
+          </span>
+          <span class="promo-cta">Zur App</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap foot">
+      <span class="muted">© 2026 PrüfDex</span>
+      <span>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="mailto:2easy4trash@gmail.com">Kontakt</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
