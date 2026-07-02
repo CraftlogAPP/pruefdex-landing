@@ -13,105 +13,155 @@
   <style>
     :root {
       --bg: #0B1220; --surface: #131C2E; --surface2: #0F1726; --border: #27334A;
-      --text: #E7ECF3; --muted: #9AA7BD; --blue: #2563EB; --blue2: #3B82F6;
+      --text: #E7ECF3; --muted: #9AA7BD;
+      --blue: #2563EB; --blue2: #5B8DF7; --glow: rgba(37,99,235,.18);
       --green: #22C55E;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       background:
-        radial-gradient(900px 480px at 50% -120px, rgba(37,99,235,.20), transparent 70%),
-        radial-gradient(600px 360px at 90% 120px, rgba(59,130,246,.10), transparent 70%),
+        radial-gradient(1100px 620px at 50% -140px, rgba(37,99,235,.22), transparent 65%),
+        radial-gradient(800px 520px at 92% 10%, rgba(91,141,247,.12), transparent 62%),
+        radial-gradient(800px 520px at 8% 60%, rgba(37,99,235,.08), transparent 60%),
         var(--bg);
       background-attachment: fixed;
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.65; -webkit-font-smoothing: antialiased;
     }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
+      mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
+    }
     a { color: #8FB4FF; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-    /* Header */
-    header { padding: 22px 0; display: flex; align-items: center; gap: 12px; }
-    .logo { width: 38px; height: 38px; border-radius: 10px; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+    /* Sticky glass header */
+    .sitehead {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11,18,32,.72);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    header { padding: 14px 0; display: flex; align-items: center; gap: 12px; }
+    .logo { width: 38px; height: 38px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(8,16,40,.5); }
     .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .brand { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+    .brand { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
     .nav-spacer { flex: 1; }
     .nav a { color: var(--muted); font-size: 14px; margin-left: 20px; }
+    .nav a:hover { color: var(--text); text-decoration: none; }
     @media (max-width: 640px) { .nav { display: none; } }
 
     /* Hero */
-    .hero { padding: 48px 0 36px; text-align: center; }
+    .hero { padding: 64px 0 40px; text-align: center; }
     .badge {
-      display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .3px;
-      color: #BFD3FF; background: rgba(37,99,235,.14); border: 1px solid rgba(59,130,246,.35);
-      padding: 6px 12px; border-radius: 999px; margin-bottom: 22px;
+      display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: .5px;
+      color: #BFD3FF; background: rgba(37,99,235,.14); border: 1px solid rgba(91,141,247,.35);
+      padding: 7px 14px; border-radius: 999px; margin-bottom: 24px;
     }
     h1 {
-      font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1.12;
-      max-width: 760px; margin: 0 auto 18px;
+      font-size: clamp(34px, 5.6vw, 50px); font-weight: 850; letter-spacing: -1.4px; line-height: 1.1;
+      max-width: 780px; margin: 0 auto 18px;
     }
-    h1 .hl { color: var(--blue2); }
-    .sub { font-size: 18px; color: var(--muted); max-width: 600px; margin: 0 auto 30px; }
+    h1 .hl { background: linear-gradient(120deg, #9DC0FF, var(--blue2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sub { font-size: 18px; color: var(--muted); max-width: 620px; margin: 0 auto 30px; }
     .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn {
-      display: inline-block; font-size: 15px; font-weight: 600; padding: 13px 24px;
-      border-radius: 11px; border: 1px solid transparent; cursor: pointer;
+      display: inline-block; font-size: 15.5px; font-weight: 650; padding: 14px 26px;
+      border-radius: 12px; border: 1px solid transparent; cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
-    .btn-primary { background: var(--blue); color: #fff; }
-    .btn-primary:hover { background: var(--blue2); text-decoration: none; }
-    .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn-primary { background: linear-gradient(135deg, var(--blue2), var(--blue)); color: #fff;
+      box-shadow: 0 10px 30px rgba(37,99,235,.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(37,99,235,.45); text-decoration: none; }
+    .btn-ghost { background: rgba(255,255,255,.03); color: var(--text); border-color: var(--border); }
     .btn-ghost:hover { border-color: var(--blue2); text-decoration: none; }
-    .hero-note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+    .hero-note { font-size: 13px; color: var(--muted); margin-top: 18px; }
 
-    @media (max-width: 640px) { h1 { font-size: 32px; } .sub { font-size: 16px; } }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero > * { opacity: 0; transform: translateY(16px); animation: rise .7s cubic-bezier(.22,.61,.36,1) forwards; }
+      .hero > *:nth-child(2) { animation-delay: .08s; }
+      .hero > *:nth-child(3) { animation-delay: .16s; }
+      .hero > *:nth-child(4) { animation-delay: .24s; }
+      .hero > *:nth-child(5) { animation-delay: .32s; }
+      .hero > *:nth-child(6) { animation-delay: .40s; }
+      @keyframes rise { to { opacity: 1; transform: none; } }
+    }
+
+    /* Stats strip */
+    .stats { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+      margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--border); }
+    .stat .n { font-size: 24px; font-weight: 800; letter-spacing: -.5px; color: var(--blue2); }
+    .stat .l { color: var(--muted); font-size: 13px; }
 
     /* Sections */
-    section { padding: 44px 0; }
-    .eyebrow { color: var(--blue2); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
-    h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; }
+    section { padding: 48px 0; }
+    .eyebrow { color: var(--blue2); font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
+    h2 { font-size: clamp(24px, 4vw, 30px); font-weight: 850; letter-spacing: -0.6px; margin-bottom: 14px; }
     .lead { color: var(--muted); font-size: 16px; max-width: 620px; margin-bottom: 28px; }
 
     /* Steps / Features grid */
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
     .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-      padding: 22px 20px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 18px;
+      padding: 24px 20px;
+      transition: transform .18s ease, border-color .18s ease;
     }
-    .card .ico { width: 40px; height: 40px; border-radius: 10px; background: rgba(37,99,235,.16); display: grid; place-items: center; margin-bottom: 14px; font-size: 20px; }
-    .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 7px; }
+    .card::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(340px 160px at 100% 0%, var(--glow), transparent 70%); opacity: .9; }
+    .card > * { position: relative; }
+    .card:hover { transform: translateY(-4px); border-color: var(--blue2); }
+    .card .ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(37,99,235,.16);
+      border: 1px solid rgba(91,141,247,.25); display: grid; place-items: center; margin-bottom: 14px; font-size: 21px; }
+    .card h3 { font-size: 17px; font-weight: 750; margin-bottom: 7px; }
     .card p { color: var(--muted); font-size: 14.5px; }
-    .step-n { color: var(--blue2); font-weight: 800; font-size: 13px; letter-spacing: 1px; }
+    .step-n { color: var(--blue2); font-weight: 800; font-size: 12px; letter-spacing: 1px; margin-bottom: 2px; }
 
-    /* Cross-Promo: echtes App-Icon links, Name + Text mittig, Button rechts */
+    /* Cross-Promo */
     .promo-list { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 720px; }
     .promo {
+      position: relative; overflow: hidden;
       display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-      padding: 14px 16px;
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 14px 16px; color: inherit;
+      transition: border-color .18s ease, transform .18s ease;
     }
+    .promo:hover { border-color: var(--blue2); transform: translateY(-2px); text-decoration: none; }
+    .promo::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(300px 140px at 100% 0%, var(--glow), transparent 70%); opacity: .7; }
+    .promo > * { position: relative; }
     .promo-ico {
       width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0; overflow: hidden;
       box-shadow: 0 4px 14px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
     }
     .promo-ico img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .promo-body { flex: 1; min-width: 180px; }
-    .promo-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 3px; color: var(--text); }
+    .promo-body h3 { font-size: 16px; font-weight: 750; margin-bottom: 3px; color: var(--text); }
     .promo-body p { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
     .promo-body h3 .soon { font-size: 10.5px; font-weight: 700; color: #BFD3FF; background: rgba(37,99,235,.18); padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
-    /* toter Platzhalter-Button — Store-Listing folgt */
     .promo-cta {
-      flex-shrink: 0; font-size: 13.5px; font-weight: 600; color: var(--muted);
-      background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
-      padding: 9px 16px; cursor: default; user-select: none; white-space: nowrap;
+      flex-shrink: 0; font-size: 13.5px; font-weight: 650; color: var(--blue2);
+      background: rgba(37,99,235,.12); border: 1px solid rgba(91,141,247,.35); border-radius: 10px;
+      padding: 9px 16px; white-space: nowrap;
     }
 
     /* Why list */
     .why { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
     @media (max-width: 700px) { .why { grid-template-columns: 1fr; } }
-    .why-item { display: flex; gap: 12px; align-items: flex-start; }
+    .why-item { display: flex; gap: 12px; align-items: flex-start;
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
     .check { color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
     .why-item b { font-weight: 700; }
     .why-item span { color: var(--muted); font-size: 14.5px; }
@@ -119,20 +169,38 @@
     /* Pricing */
     .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 680px; }
     @media (max-width: 700px) { .price-grid { grid-template-columns: 1fr; } }
-    .plan { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; }
-    .plan.pro { border-color: var(--blue2); box-shadow: 0 0 0 1px rgba(59,130,246,.4); }
-    .plan .name { font-weight: 700; font-size: 16px; }
-    .plan .amount { font-size: 34px; font-weight: 800; letter-spacing: -1px; margin: 10px 0 4px; }
+    .plan { position: relative; overflow: hidden;
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 18px; padding: 28px 24px;
+      transition: transform .18s ease; }
+    .plan::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(340px 160px at 100% 0%, var(--glow), transparent 70%); opacity: .7; }
+    .plan > * { position: relative; }
+    .plan:hover { transform: translateY(-4px); }
+    .plan.pro { border-color: var(--blue2); box-shadow: 0 0 0 1px rgba(91,141,247,.4), 0 18px 44px rgba(37,99,235,.15); }
+    .plan .name { font-weight: 750; font-size: 16px; }
+    .plan .amount { font-size: 38px; font-weight: 850; letter-spacing: -1px; margin: 10px 0 4px; }
+    .plan.pro .amount { color: var(--blue2); }
     .plan .amount small { font-size: 15px; font-weight: 600; color: var(--muted); }
     .plan ul { list-style: none; margin-top: 16px; }
     .plan li { color: var(--muted); font-size: 14.5px; padding: 5px 0 5px 22px; position: relative; }
     .plan li::before { content: "✓"; color: var(--green); position: absolute; left: 0; font-weight: 800; }
-    .plan .tag { display: inline-block; font-size: 11px; font-weight: 700; color: #BFD3FF; background: rgba(37,99,235,.18); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+    .plan .tag { display: inline-block; font-size: 11px; font-weight: 700; color: #BFD3FF; background: rgba(37,99,235,.18); border: 1px solid rgba(91,141,247,.35); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
 
     /* CTA band */
-    .band { background: linear-gradient(135deg, #1b2c4d, #101a2c); border: 1px solid rgba(59,130,246,.35); border-radius: 20px; padding: 44px 28px; text-align: center; box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+    .band { background: linear-gradient(135deg, #1b2c4d, #101a2c); border: 1px solid rgba(91,141,247,.35);
+      border-radius: 22px; padding: 48px 30px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
     .band h2 { margin-bottom: 10px; }
-    .band p { color: var(--muted); margin-bottom: 22px; }
+    .band p { color: var(--muted); margin-bottom: 24px; }
+
+    /* Scroll reveal */
+    .reveal.pre { opacity: 0; transform: translateY(18px); }
+    .reveal.in { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
+    .grid .reveal.in:nth-child(2), .why .reveal.in:nth-child(2), .promo-list .reveal.in:nth-child(2) { transition-delay: .07s; }
+    .grid .reveal.in:nth-child(3), .why .reveal.in:nth-child(3), .promo-list .reveal.in:nth-child(3) { transition-delay: .14s; }
+    .grid .reveal.in:nth-child(4), .why .reveal.in:nth-child(4), .promo-list .reveal.in:nth-child(4) { transition-delay: .21s; }
+    .why .reveal.in:nth-child(5), .promo-list .reveal.in:nth-child(5) { transition-delay: .28s; }
+    .why .reveal.in:nth-child(6), .promo-list .reveal.in:nth-child(6) { transition-delay: .35s; }
 
     /* Footer */
     footer { border-top: 1px solid var(--border); margin-top: 30px; padding: 28px 0 48px; }
@@ -144,17 +212,19 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <span class="logo"><img src="assets/pruefdex-icon.png" alt="PrüfDex" /></span>
-      <span class="brand">PrüfDex</span>
-      <span class="nav-spacer"></span>
-      <nav class="nav">
-        <a href="#so">So funktioniert's</a>
-        <a href="#warum">Warum PrüfDex</a>
-        <a href="#preise">Preise</a>
-      </nav>
-    </header>
+  <div class="sitehead">
+    <div class="wrap">
+      <header>
+        <span class="logo"><img src="assets/pruefdex-icon.png" alt="PrüfDex" /></span>
+        <span class="brand">PrüfDex</span>
+        <span class="nav-spacer"></span>
+        <nav class="nav">
+          <a href="#so">So funktioniert's</a>
+          <a href="#warum">Warum PrüfDex</a>
+          <a href="#preise">Preise</a>
+        </nav>
+      </header>
+    </div>
   </div>
 
   <!-- HERO -->
@@ -170,7 +240,12 @@
         <a href="#preise" class="btn btn-primary">Kostenlos starten</a>
         <a href="#so" class="btn btn-ghost">So funktioniert's</a>
       </div>
-      <p class="hero-note">Papierordner & Excel-Listen raus. Mobil & rechtssicher rein.</p>
+      <p class="hero-note">Papierordner &amp; Excel-Listen raus. Mobil &amp; rechtssicher rein.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">&lt; 1 Min.</div><div class="l">pro Routine-Gerät</div></div>
+        <div class="stat"><div class="n">PDF + Plakette</div><div class="l">automatisch erzeugt</div></div>
+        <div class="stat"><div class="n">Fristen-Automatik</div><div class="l">nie wieder überfällig</div></div>
+      </div>
     </div>
   </div>
 
@@ -181,25 +256,25 @@
       <h2>Vier Schritte, ein Protokoll</h2>
       <p class="lead">Kein Schulungsaufwand. Der Ablauf folgt genau dem, was die Prüfung verlangt.</p>
       <div class="grid">
-        <div class="card">
+        <div class="card reveal">
           <div class="ico">📷</div>
           <div class="step-n">SCHRITT 1</div>
           <h3>Scannen</h3>
           <p>Gerät per QR-Etikett öffnen oder neu anlegen — Bezeichnung, Typ, Seriennummer, Standort.</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="ico">✅</div>
           <div class="step-n">SCHRITT 2</div>
           <h3>Prüfen</h3>
           <p>Sichtprüfung abhaken, Messwerte eintragen (Schutzleiter-, Isolationswiderstand, Ersatzableitstrom).</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="ico">📄</div>
           <div class="step-n">SCHRITT 3</div>
           <h3>Protokoll</h3>
           <p>Prüffestes PDF mit allen Pflichtangaben plus druckbare Prüfplakette mit QR-Code — automatisch.</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="ico">🔔</div>
           <div class="step-n">SCHRITT 4</div>
           <h3>Frist im Blick</h3>
@@ -216,12 +291,12 @@
       <h2>Für den Betrieb, nicht für die IT-Abteilung</h2>
       <p class="lead">Gemacht für Elektro-Handwerk und Prüfdienstleister, die schnell und sauber dokumentieren müssen — ohne überladene Enterprise-Software.</p>
       <div class="why">
-        <div class="why-item"><span class="check">✓</span><span><b>Pflicht erfüllt:</b> Protokolle mit allen DGUV-V3-/VDE-Pflichtangaben — lückenlos und prüffest.</span></div>
-        <div class="why-item"><span class="check">✓</span><span><b>Mobil-first:</b> Die ganze Prüfung läuft am Handy. Kein Laptop, kein Papier auf der Baustelle.</span></div>
-        <div class="why-item"><span class="check">✓</span><span><b>QR-Plaketten:</b> Jedes Gerät bekommt sein Etikett — nächste Prüfung ist ein Scan entfernt.</span></div>
-        <div class="why-item"><span class="check">✓</span><span><b>Mandantenfähig:</b> Mehrere Kunden / Standorte sauber getrennt — ideal für Prüfdienstleister.</span></div>
-        <div class="why-item"><span class="check">✓</span><span><b>Fristen-Automatik:</b> Nie wieder eine Wiederholungsprüfung übersehen.</span></div>
-        <div class="why-item"><span class="check">✓</span><span><b>Schnell:</b> Routine-Gerät in unter einer Minute dokumentiert.</span></div>
+        <div class="why-item reveal"><span class="check">✓</span><span><b>Pflicht erfüllt:</b> Protokolle mit allen DGUV-V3-/VDE-Pflichtangaben — lückenlos und prüffest.</span></div>
+        <div class="why-item reveal"><span class="check">✓</span><span><b>Mobil-first:</b> Die ganze Prüfung läuft am Handy. Kein Laptop, kein Papier auf der Baustelle.</span></div>
+        <div class="why-item reveal"><span class="check">✓</span><span><b>QR-Plaketten:</b> Jedes Gerät bekommt sein Etikett — nächste Prüfung ist ein Scan entfernt.</span></div>
+        <div class="why-item reveal"><span class="check">✓</span><span><b>Mandantenfähig:</b> Mehrere Kunden / Standorte sauber getrennt — ideal für Prüfdienstleister.</span></div>
+        <div class="why-item reveal"><span class="check">✓</span><span><b>Fristen-Automatik:</b> Nie wieder eine Wiederholungsprüfung übersehen.</span></div>
+        <div class="why-item reveal"><span class="check">✓</span><span><b>Schnell:</b> Routine-Gerät in unter einer Minute dokumentiert.</span></div>
       </div>
     </div>
   </section>
@@ -233,23 +308,23 @@
       <h2>Klein anfangen, mitwachsen</h2>
       <p class="lead">Free zum Ausprobieren, Pro für den produktiven Einsatz. Keine Vertragsbindung.</p>
       <div class="price-grid">
-        <div class="plan">
+        <div class="plan reveal">
           <div class="name">Free</div>
           <div class="amount">€0</div>
           <div class="muted" style="color:var(--muted);font-size:13px;">zum Testen</div>
           <ul>
             <li>Bis zu 10 Geräte</li>
             <li>Bis zu 10 Prüfungen</li>
-            <li>PDF-Protokoll & Plakette</li>
+            <li>PDF-Protokoll &amp; Plakette</li>
             <li>Fristen-Übersicht</li>
           </ul>
         </div>
-        <div class="plan pro">
+        <div class="plan pro reveal">
           <div class="name">Pro <span class="tag">Empfohlen</span></div>
           <div class="amount">€19<small> / Monat</small></div>
           <div class="muted" style="color:var(--muted);font-size:13px;">Jahresrabatt verfügbar</div>
           <ul>
-            <li>Unbegrenzt Geräte & Prüfungen</li>
+            <li>Unbegrenzt Geräte &amp; Prüfungen</li>
             <li>Eigenes Branding im Protokoll</li>
             <li>Mehrere Mandanten / Standorte</li>
             <li>Fristen-Erinnerungen</li>
@@ -257,14 +332,14 @@
           </ul>
         </div>
       </div>
-      <p class="muted" style="font-size:13px;margin-top:14px;">Preise vorläufig, Feinjustierung nach Feedback. Bundle-Rabatt für SchutzDex-Kunden geplant.</p>
+      <p class="muted" style="font-size:13px;margin-top:14px;color:var(--muted);">Preise vorläufig, Feinjustierung nach Feedback. Bundle-Rabatt für SchutzDex-Kunden geplant.</p>
     </div>
   </section>
 
   <!-- CTA BAND -->
   <section>
     <div class="wrap">
-      <div class="band">
+      <div class="band reveal">
         <h2>Bereit, den Papierordner abzulösen?</h2>
         <p>Lege dein erstes Gerät an und erstelle in Minuten dein erstes prüffestes Protokoll.</p>
         <a href="#" class="btn btn-primary">App holen</a>
@@ -284,54 +359,54 @@
       <h2>Entdecke die ganze Dexware</h2>
       <p class="lead">PrüfDex ist Teil der Dexware-Familie — schlanke Apps für Betriebe, Compliance aus einer Hand. Besonders stark im Bundle mit SchutzDex.</p>
       <div class="promo-list">
-        <div class="promo">
+        <a class="promo reveal" href="https://schutzdex.dexware.app" target="_blank" rel="noopener">
           <span class="promo-ico"><img src="assets/schutzheld-icon.png" alt="SchutzDex" /></span>
           <span class="promo-body">
             <h3>SchutzDex <span class="soon">Bundle</span></h3>
             <p>KI-gestützte Arbeitsschutz-Unterweisung mit prüffestem Nachweis und Gefährdungsbeurteilung.</p>
           </span>
-          <span class="promo-cta">Zur App</span>
-        </div>
-        <div class="promo">
+          <span class="promo-cta">Zur Website →</span>
+        </a>
+        <a class="promo reveal" href="https://craftdex.dexware.app" target="_blank" rel="noopener">
           <span class="promo-ico"><img src="assets/craftlog-icon.png" alt="CraftDex" /></span>
           <span class="promo-body">
-            <h3>CraftDex <span class="soon">Bald</span></h3>
+            <h3>CraftDex</h3>
             <p>Die App für Handwerksbetriebe — Aufträge, Zeit und Doku an einem Ort.</p>
           </span>
-          <span class="promo-cta">Zur App</span>
-        </div>
-        <div class="promo">
+          <span class="promo-cta">Zur Website →</span>
+        </a>
+        <a class="promo reveal" href="https://baumdex-portal.vercel.app" target="_blank" rel="noopener">
           <span class="promo-ico"><img src="assets/baumdex-icon.png" alt="BaumDex" /></span>
           <span class="promo-body">
-            <h3>BaumDex <span class="soon">Bald</span></h3>
-            <p>Baumkataster & Verkehrssicherung — Kontrollen lückenlos und rechtssicher dokumentieren.</p>
+            <h3>BaumDex</h3>
+            <p>Baumkataster &amp; Verkehrssicherung — Kontrollen lückenlos und rechtssicher dokumentieren.</p>
           </span>
-          <span class="promo-cta">Zur App</span>
-        </div>
-        <div class="promo">
+          <span class="promo-cta">Zur Website →</span>
+        </a>
+        <a class="promo reveal" href="https://winterdex.dexware.app" target="_blank" rel="noopener">
           <span class="promo-ico"><img src="assets/winterdex-icon.png" alt="WinterDex" /></span>
           <span class="promo-body">
-            <h3>WinterDex <span class="soon">Bald</span></h3>
-            <p>Winterdienst-Nachweis — Räum- & Streueinsätze gerichtsfest dokumentieren.</p>
+            <h3>WinterDex</h3>
+            <p>Winterdienst-Nachweis — Räum- &amp; Streueinsätze gerichtsfest dokumentieren.</p>
           </span>
-          <span class="promo-cta">Zur App</span>
-        </div>
-        <div class="promo">
+          <span class="promo-cta">Zur Website →</span>
+        </a>
+        <a class="promo reveal" href="https://tourdex.dexware.app" target="_blank" rel="noopener">
           <span class="promo-ico"><img src="assets/routelog-icon.png" alt="TourDex" /></span>
           <span class="promo-body">
-            <h3>TourDex <span class="soon">Bald</span></h3>
+            <h3>TourDex</h3>
             <p>Automatisches Fahrtenbuch — Fahrten erkennen und Kilometer rechtssicher dokumentieren.</p>
           </span>
-          <span class="promo-cta">Zur App</span>
-        </div>
-        <div class="promo">
+          <span class="promo-cta">Zur Website →</span>
+        </a>
+        <a class="promo reveal" href="https://dokudex.dexware.app" target="_blank" rel="noopener">
           <span class="promo-ico"><img src="assets/archio-icon.png" alt="DokuDex" /></span>
           <span class="promo-body">
-            <h3>DokuDex <span class="soon">Bald</span></h3>
+            <h3>DokuDex</h3>
             <p>Dokumente sicher archivieren und jederzeit wiederfinden.</p>
           </span>
-          <span class="promo-cta">Zur App</span>
-        </div>
+          <span class="promo-cta">Zur Website →</span>
+        </a>
       </div>
       <p style="text-align:center;margin-top:24px">
         <a href="https://dexware.app/" target="_blank" rel="noopener">Alle Dexware-Apps auf einen Blick →</a>
@@ -352,5 +427,20 @@
       </span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!('IntersectionObserver' in window)) return;
+      var els = document.querySelectorAll('.reveal');
+      for (var i = 0; i < els.length; i++) els[i].classList.add('pre');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      for (var j = 0; j < els.length; j++) io.observe(els[j]);
+    })();
+  </script>
 </body>
 </html>
