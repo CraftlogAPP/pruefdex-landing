@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DGUV V3 Prüfung ortsveränderlicher Geräte: Fristen, Messwerte, Protokoll | PrüfDex</title>
+  <meta name="description" content="DGUV V3 Prüfung ortsveränderlicher elektrischer Geräte: Wer prüfen muss, Richtwerte für Prüffristen (24 Monate bis 3 Monate), Ablauf nach VDE 0701-0702, Prüfprotokoll, Plakette und Haftung. Praxis-Ratgeber für Betriebe." />
+  <meta name="robots" content="all" />
+  <meta name="theme-color" content="#0B1220" />
+  <link rel="canonical" href="https://pruefdex.dexware.app/ratgeber-dguv-v3.html" />
+  <meta property="og:title" content="DGUV V3 Prüfung ortsveränderlicher Geräte: Fristen, Messwerte, Protokoll" />
+  <meta property="og:description" content="Fristen, Ablauf, Messwerte und Protokoll der DGUV-V3-Prüfung — verständlich erklärt für Betriebe und Prüfdienstleister." />
+  <meta property="og:type" content="article" />
+  <style>
+    :root {
+      --bg: #0B1220; --surface: #131C2E; --surface2: #0F1726; --border: #27334A;
+      --text: #E7ECF3; --muted: #9AA7BD;
+      --blue: #2563EB; --blue2: #5B8DF7; --glow: rgba(37,99,235,.18);
+      --green: #22C55E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(1100px 620px at 50% -140px, rgba(37,99,235,.22), transparent 65%),
+        radial-gradient(800px 520px at 92% 10%, rgba(91,141,247,.12), transparent 62%),
+        radial-gradient(800px 520px at 8% 60%, rgba(37,99,235,.08), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
+      mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
+    }
+    a { color: #8FB4FF; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+    /* Sticky glass header */
+    .sitehead {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11,18,32,.72);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .sitehead .wrap { max-width: 1000px; }
+    header { padding: 14px 0; display: flex; align-items: center; gap: 12px; }
+    .logo { width: 38px; height: 38px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(8,16,40,.5); }
+    .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+    .nav-spacer { flex: 1; }
+    .nav a { color: var(--muted); font-size: 14px; margin-left: 20px; }
+    .nav a:hover { color: var(--text); text-decoration: none; }
+    @media (max-width: 640px) { .nav a:not(.nav-cta) { display: none; } }
+
+    /* Article */
+    article { padding: 48px 0 8px; }
+    .kicker { color: var(--blue2); font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px; }
+    h1 {
+      font-size: clamp(28px, 4.8vw, 42px); font-weight: 850; letter-spacing: -1px; line-height: 1.14;
+      margin-bottom: 18px;
+    }
+    h1 .hl { background: linear-gradient(120deg, #9DC0FF, var(--blue2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .meta { color: var(--muted); font-size: 13.5px; margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 22px; }
+    article h2 { font-size: clamp(21px, 3.4vw, 27px); font-weight: 850; letter-spacing: -0.5px; margin: 40px 0 12px; }
+    article h3 { font-size: 18px; font-weight: 750; margin: 26px 0 8px; }
+    article p { color: #D3DBE8; font-size: 16px; margin-bottom: 14px; }
+    article ul, article ol { margin: 0 0 16px 0; padding-left: 4px; list-style: none; }
+    article li { color: #D3DBE8; font-size: 15.5px; padding: 6px 0 6px 26px; position: relative; }
+    article ul li::before { content: "✓"; color: var(--green); position: absolute; left: 0; font-weight: 800; }
+    article ol { counter-reset: step; }
+    article ol li { counter-increment: step; }
+    article ol li::before { content: counter(step); color: var(--blue2); font-weight: 800; position: absolute; left: 0; font-size: 13.5px; top: 8px; }
+    article b, article strong { color: var(--text); font-weight: 700; }
+    .lead { font-size: 18px; color: var(--muted); margin: 22px 0 8px; }
+
+    /* Callout / note box */
+    .note {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; margin: 22px 0;
+    }
+    .note::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(300px 140px at 100% 0%, var(--glow), transparent 70%); opacity: .8; }
+    .note > * { position: relative; }
+    .note .nh { font-weight: 750; font-size: 15px; margin-bottom: 6px; color: var(--text); }
+    .note p { font-size: 14.5px; margin-bottom: 0; color: var(--muted); }
+
+    /* Table */
+    .tablewrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: 16px; }
+    table { width: 100%; border-collapse: collapse; min-width: 460px; }
+    th, td { text-align: left; padding: 13px 16px; font-size: 14.5px; border-bottom: 1px solid var(--border); }
+    th { background: rgba(37,99,235,.10); color: var(--text); font-weight: 750; font-size: 13px; letter-spacing: .3px; }
+    td { color: #D3DBE8; }
+    tr:last-child td { border-bottom: none; }
+    td b { color: var(--blue2); }
+
+    /* FAQ */
+    .faq { margin-top: 8px; }
+    .faq details {
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 14px; padding: 4px 20px; margin-bottom: 12px;
+    }
+    .faq summary { cursor: pointer; font-weight: 700; font-size: 16px; padding: 16px 0; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--blue2); font-size: 22px; font-weight: 400; flex-shrink: 0; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { color: var(--muted); font-size: 15px; padding: 0 0 18px; margin: 0; }
+
+    /* CTA band */
+    .band { background: linear-gradient(135deg, #1b2c4d, #101a2c); border: 1px solid rgba(91,141,247,.35);
+      border-radius: 22px; padding: 40px 30px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.4); margin: 44px 0 8px; }
+    .band h2 { margin: 0 0 10px; }
+    .band p { color: var(--muted); margin-bottom: 22px; }
+    .btn {
+      display: inline-block; font-size: 15.5px; font-weight: 650; padding: 14px 26px;
+      border-radius: 12px; border: 1px solid transparent; cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--blue2), var(--blue)); color: #fff;
+      box-shadow: 0 10px 30px rgba(37,99,235,.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(37,99,235,.45); text-decoration: none; }
+    .nav-cta { color: var(--blue2) !important; font-weight: 700; }
+
+    .disclaimer { color: var(--muted); font-size: 12.5px; margin: 28px 0 0; }
+    .backlink { display: inline-block; margin: 30px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 28px 0 48px; }
+    footer .wrap { max-width: 1000px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .foot .muted { color: var(--muted); font-size: 13px; }
+    .foot a { color: var(--muted); font-size: 13px; margin-left: 18px; }
+  </style>
+
+  <!-- FAQPage strukturierte Daten -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie oft müssen ortsveränderliche elektrische Geräte nach DGUV V3 geprüft werden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Prüffrist legt der Arbeitgeber auf Basis der Gefährdungsbeurteilung fest. Die DGUV nennt Richtwerte: unter Büro- und ähnlichen Bedingungen üblicherweise bis zu 24 Monate, in Werkstätten und rauem Umfeld deutlich kürzer, auf Baustellen häufig 3 Monate. Bleibt die Fehlerquote bei den Prüfungen unter 2 Prozent, dürfen die Fristen verlängert werden; treten häufiger Mängel auf, müssen sie verkürzt werden."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wer darf die DGUV-V3-Prüfung durchführen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Verantwortlich ist der Arbeitgeber. Durchführen und bewerten darf die Prüfung eine Elektrofachkraft oder eine zur Prüfung befähigte Person nach TRBS 1203 mit entsprechender elektrotechnischer Ausbildung, Erfahrung und geeigneten Prüfmitteln. Elektrotechnisch unterwiesene Personen dürfen unter Anleitung und Aufsicht einer Elektrofachkraft unterstützen, die Bewertung bleibt aber bei der Fachkraft."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was wird bei der Prüfung ortsveränderlicher Geräte gemessen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nach DIN VDE 0701-0702 folgen auf die Sichtprüfung die Messungen: Schutzleiterwiderstand (bei Geräten der Schutzklasse I), Isolationswiderstand sowie Schutzleiter- bzw. Berührungs- oder Ersatzableitstrom. Abschließend erfolgt eine Funktionsprüfung. Das Prüfgerät vergleicht die Messwerte automatisch mit den in der Norm festgelegten Grenzwerten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was muss in einem DGUV-V3-Prüfprotokoll stehen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das Protokoll dokumentiert das geprüfte Gerät (Bezeichnung, Typ, Seriennummer, Standort), die angewandte Norm, die Sichtprüfung, die Messwerte, das Prüfergebnis (bestanden oder nicht bestanden), das Prüfdatum, die nächste Frist sowie Name und Unterschrift des Prüfers. So ist die Prüfung lückenlos nachweisbar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist die DGUV-V3-Prüfung gesetzlich Pflicht?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Aus der Betriebssicherheitsverordnung (BetrSichV) und der DGUV Vorschrift 3 ergibt sich die Pflicht des Arbeitgebers, elektrische Betriebsmittel vor der ersten Inbetriebnahme und in regelmäßigen Abständen auf ihren ordnungsgemäßen Zustand prüfen zu lassen. Die Prüfung ist zu dokumentieren."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was droht bei fehlender oder unzureichender Prüfung?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fehlt die vorgeschriebene Prüfung, verstößt der Betrieb gegen den Arbeitsschutz. Kommt es zu einem Unfall, kann der Unfallversicherungsträger Regressforderungen stellen, der Versicherungsschutz kann eingeschränkt werden und es drohen Bußgelder sowie im Schadensfall haftungs- und strafrechtliche Konsequenzen für die Verantwortlichen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist der Unterschied zwischen ortsfesten und ortsveränderlichen Betriebsmitteln?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ortsveränderliche Betriebsmittel lassen sich während des Betriebs bewegen oder leicht umsetzen, etwa Verlängerungsleitungen, Werkzeuge, Ladegeräte, Kaffeemaschinen oder Computer mit Steckeranschluss. Ortsfeste Betriebsmittel sind fest angeschlossen oder aufgrund ihrer Masse nicht bewegbar. Für beide gelten eigene Richtwerte für die Prüffristen."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="sitehead">
+    <div class="wrap">
+      <header>
+        <a href="index.html" class="logo"><img src="assets/pruefdex-icon.png" alt="PrüfDex" /></a>
+        <span class="brand">PrüfDex</span>
+        <span class="nav-spacer"></span>
+        <nav class="nav">
+          <a href="index.html#so">So funktioniert's</a>
+          <a href="index.html#preise">Preise</a>
+          <a href="ratgeber-dguv-v3.html" class="nav-cta">Ratgeber</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article>
+      <div class="kicker">Ratgeber · DGUV Vorschrift 3</div>
+      <h1>DGUV V3 Prüfung ortsveränderlicher elektrischer Geräte: <span class="hl">Welche Fristen, Messwerte und Protokolle gelten?</span></h1>
+      <p class="meta">Praxisleitfaden für Betriebe, Elektro-Handwerk und Prüfdienstleister · Lesezeit ca. 7 Minuten</p>
+
+      <p class="lead">
+        Jedes elektrische Gerät mit Stecker, das im Betrieb genutzt wird, muss regelmäßig auf seinen
+        sicheren Zustand geprüft werden. Dieser Ratgeber erklärt, wer prüfen muss, in welchen Abständen,
+        wie eine Prüfung nach DIN VDE 0701-0702 abläuft und was in ein prüffestes Protokoll gehört.
+      </p>
+
+      <h2>Warum die Prüfung Pflicht ist</h2>
+      <p>
+        Die Grundlage bildet die <b>Betriebssicherheitsverordnung (BetrSichV)</b> zusammen mit der
+        <b>DGUV Vorschrift 3</b> „Elektrische Anlagen und Betriebsmittel". Beide verpflichten den
+        Arbeitgeber, elektrische Betriebsmittel vor der ersten Inbetriebnahme und danach in regelmäßigen
+        Abständen durch eine fachkundige Person prüfen zu lassen — und das Ergebnis zu dokumentieren.
+        Ziel ist es, Gefährdungen durch elektrischen Strom, also Stromschlag und Brand, so früh zu
+        erkennen, dass niemand zu Schaden kommt.
+      </p>
+      <p>
+        Betroffen sind vor allem <b>ortsveränderliche elektrische Betriebsmittel</b>: Geräte, die während
+        des Betriebs bewegt oder leicht umgesetzt werden können. Dazu zählen Verlängerungs- und
+        Geräteanschlussleitungen, Elektrowerkzeuge, Ladegeräte, Küchengeräte, Monitore, Netzteile oder
+        Computer mit Steckeranschluss. Von den ortsfesten Betriebsmitteln — fest verdrahtet oder aufgrund
+        ihres Gewichts nicht bewegbar — grenzt man sie deshalb ab, weil bewegliche Geräte durch Ziehen,
+        Knicken und mechanische Belastung deutlich häufiger Schäden an Leitung und Stecker entwickeln.
+      </p>
+
+      <h2>Wer muss prüfen — und wer darf prüfen?</h2>
+      <p>
+        <b>Verantwortlich ist immer der Arbeitgeber beziehungsweise Unternehmer.</b> Er organisiert die
+        Prüfung, stellt die Mittel bereit und trägt die Verantwortung dafür, dass sie stattfindet. Er
+        muss die Prüfung aber nicht selbst durchführen.
+      </p>
+      <p>
+        Durchführen und fachlich bewerten darf die Prüfung eine <b>Elektrofachkraft</b> oder eine
+        <b>zur Prüfung befähigte Person</b> im Sinne der TRBS 1203. Diese Person braucht eine
+        elektrotechnische Ausbildung, ausreichende Berufserfahrung, aktuelle Kenntnis der einschlägigen
+        Normen und geeignete, kalibrierte Prüfgeräte. Eine <b>elektrotechnisch unterwiesene Person</b>
+        darf einzelne Handgriffe unter Leitung und Aufsicht einer Elektrofachkraft übernehmen — die
+        Beurteilung, ob ein Gerät bestanden hat, bleibt jedoch der Fachkraft vorbehalten.
+      </p>
+
+      <h2>Prüffristen: Richtwerte statt starrer Vorgaben</h2>
+      <p>
+        Es gibt keine gesetzlich fixierte Frist für jedes Gerät. Stattdessen legt der Arbeitgeber die
+        Prüfintervalle im Rahmen der <b>Gefährdungsbeurteilung</b> fest. Als Orientierung dienen die
+        Richtwerte der DGUV. Ausschlaggebend ist die Beanspruchung: Ein Laptop im Büro ist weit weniger
+        gefährdet als eine Bohrmaschine auf der Baustelle.
+      </p>
+
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Einsatzumgebung</th><th>Richtwert Prüffrist (ortsveränderliche Geräte)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Büro und ähnlich geringe Beanspruchung</td><td><b>bis zu 24 Monate</b></td></tr>
+            <tr><td>Werkstatt, Gewerbe, mittlere Beanspruchung</td><td><b>ca. 6 bis 12 Monate</b></td></tr>
+            <tr><td>Baustelle, raues Umfeld, hohe Beanspruchung</td><td><b>ca. 3 Monate</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <div class="nh">Die 2-Prozent-Regel</div>
+        <p>
+          Die Richtwerte sind kein Automatismus. Liegt die <b>Fehlerquote</b> bei den Prüfungen dauerhaft
+          unter 2 Prozent, dürfen die Fristen verlängert werden. Häufen sich dagegen Mängel, müssen die
+          Intervalle verkürzt werden. Die tatsächliche Frist ergibt sich also aus der Gefährdungsbeurteilung
+          und den Erfahrungswerten des Betriebs — die DGUV-Zahlen sind der Startpunkt, nicht das letzte Wort.
+        </p>
+      </div>
+
+      <h2>Ablauf der Prüfung nach VDE 0701-0702</h2>
+      <p>
+        Die Wiederholungsprüfung ortsveränderlicher Geräte folgt der Normenreihe
+        <b>DIN VDE 0701-0702</b>. Sie läuft in einer festen Reihenfolge ab — jeder Schritt baut auf dem
+        vorherigen auf.
+      </p>
+      <ol>
+        <li>
+          <b>Sichtprüfung.</b> Zuerst wird das Gerät ohne Messtechnik begutachtet: Sind Gehäuse, Stecker
+          und Anschlussleitung unbeschädigt? Gibt es Knickstellen, Brandspuren, lose Teile, Feuchtigkeit
+          oder unzulässige Reparaturen? Viele Mängel fallen bereits hier auf. Ein Gerät mit sichtbarem
+          Defekt fällt sofort durch und wird nicht weitergemessen.
+        </li>
+        <li>
+          <b>Messung des Schutzleiterwiderstands.</b> Bei Geräten der Schutzklasse I wird geprüft, ob der
+          Schutzleiter durchgängig niederohmig mit den berührbaren Metallteilen verbunden ist — die
+          Grundlage dafür, dass im Fehlerfall die Sicherung auslöst.
+        </li>
+        <li>
+          <b>Messung des Isolationswiderstands.</b> Sie zeigt, wie gut die aktiven Teile gegen das Gehäuse
+          isoliert sind. Ein zu niedriger Wert deutet auf beginnende Isolationsschäden hin.
+        </li>
+        <li>
+          <b>Messung des Schutzleiter-, Berührungs- oder Ersatzableitstroms.</b> Gemessen wird der Strom,
+          der im Betrieb über den Schutzleiter abfließt beziehungsweise bei Berührung fließen könnte.
+        </li>
+        <li>
+          <b>Funktionsprüfung.</b> Zum Abschluss wird geprüft, ob das Gerät bestimmungsgemäß funktioniert
+          und Schutzeinrichtungen wie etwa Schalter korrekt arbeiten.
+        </li>
+      </ol>
+      <p>
+        Moderne Prüfgeräte vergleichen die gemessenen Werte automatisch mit den in der Norm hinterlegten
+        <b>Grenzwerten</b>. Zur Einordnung einige geläufige Richtwerte nach DIN VDE 0701-0702, wie sie
+        von den Prüfgeräten herangezogen werden:
+      </p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Messgröße</th><th>Üblicher Grenzwert</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Schutzleiterwiderstand (Leitung bis 5 m)</td><td><b>≤ 0,3 Ω</b> (je weitere 7,5 m +0,1 Ω, max. 1 Ω)</td></tr>
+            <tr><td>Isolationswiderstand, Schutzklasse I</td><td><b>≥ 1 MΩ</b></td></tr>
+            <tr><td>Isolationswiderstand, Schutzklasse II</td><td><b>≥ 2 MΩ</b></td></tr>
+            <tr><td>Schutzleiterstrom</td><td><b>≤ 3,5 mA</b></td></tr>
+            <tr><td>Berührungsstrom</td><td><b>≤ 0,5 mA</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Diese Werte sind Orientierungsgrößen. Maßgeblich ist im Einzelfall stets die für das Gerät
+        anwendbare Norm und Geräteart — Heizgeräte mit hoher Leistung etwa haben abweichende Grenzwerte.
+        Deshalb übernimmt die Bewertung immer die Fachkraft mit einem geeigneten, kalibrierten Prüfgerät.
+      </p>
+
+      <h2>Prüfprotokoll und Prüfplakette</h2>
+      <p>
+        Eine Prüfung ist nur so viel wert wie ihre Dokumentation. Das <b>Prüfprotokoll</b> ist der
+        Nachweis, dass geprüft wurde — und was dabei herauskam. Prüffest ist es, wenn es lückenlos alle
+        Pflichtangaben enthält:
+      </p>
+      <ul>
+        <li>Eindeutige Kennung des Geräts: Bezeichnung, Typ, Seriennummer oder Inventarnummer, Standort</li>
+        <li>Angewandte Prüfgrundlage (z. B. DGUV V3, DIN VDE 0701-0702)</li>
+        <li>Ergebnis der Sichtprüfung</li>
+        <li>Die einzelnen Messwerte</li>
+        <li>Gesamtergebnis: bestanden oder nicht bestanden</li>
+        <li>Prüfdatum und errechnete nächste Prüffrist</li>
+        <li>Name und Unterschrift der prüfenden Fachkraft</li>
+      </ul>
+      <p>
+        Ergänzend erhält jedes bestandene Gerät eine <b>Prüfplakette</b>. Sie macht auf einen Blick
+        sichtbar, dass geprüft wurde und wann die nächste Prüfung fällig ist. In der Praxis trägt die
+        Plakette häufig einen QR-Code, über den sich das zugehörige Protokoll und die Historie des Geräts
+        sofort aufrufen lassen — das spart bei der nächsten Prüfung viel Sucherei.
+      </p>
+
+      <h2>Haftung: Was bei fehlender Prüfung droht</h2>
+      <p>
+        Wird die vorgeschriebene Prüfung nicht durchgeführt oder nicht dokumentiert, verstößt der Betrieb
+        gegen seine Arbeitsschutzpflichten. Solange nichts passiert, bleibt das oft unbemerkt — im
+        Schadensfall wird es teuer. Kommt es zu einem Unfall mit einem ungeprüften Gerät, kann der
+        zuständige <b>Unfallversicherungsträger Regress</b> nehmen, also einen Teil seiner Leistungen vom
+        Unternehmen zurückfordern. Hinzu kommen mögliche Bußgelder, Einschränkungen beim
+        Versicherungsschutz und — bei grober Vernachlässigung — persönliche haftungs- und strafrechtliche
+        Konsequenzen für die verantwortlichen Personen. Eine saubere, nachvollziehbare Dokumentation ist
+        deshalb nicht Bürokratie, sondern Absicherung.
+      </p>
+
+      <div class="band">
+        <h2>Prüfungen dokumentieren — in unter einer Minute</h2>
+        <p>
+          PrüfDex führt durch Sicht- und Messprüfung, erzeugt das prüffeste DGUV-V3-Protokoll samt
+          Plakette und erinnert automatisch an die nächste Frist.
+        </p>
+        <a href="index.html#preise" class="btn btn-primary">PrüfDex kostenlos starten →</a>
+      </div>
+
+      <h2>Häufige Fragen zur DGUV-V3-Prüfung</h2>
+      <div class="faq">
+        <details>
+          <summary>Wie oft müssen ortsveränderliche Geräte geprüft werden?</summary>
+          <p>
+            Die Frist legt der Arbeitgeber auf Basis der Gefährdungsbeurteilung fest. Als Richtwerte
+            gelten: unter Bürobedingungen bis zu 24 Monate, in Werkstätten kürzer, auf Baustellen häufig
+            3 Monate. Bleibt die Fehlerquote unter 2 Prozent, dürfen die Fristen verlängert werden; bei
+            gehäuften Mängeln müssen sie verkürzt werden.
+          </p>
+        </details>
+        <details>
+          <summary>Wer darf die DGUV-V3-Prüfung durchführen?</summary>
+          <p>
+            Verantwortlich ist der Arbeitgeber. Durchführen und bewerten darf die Prüfung eine
+            Elektrofachkraft oder eine zur Prüfung befähigte Person nach TRBS 1203 mit passender
+            Ausbildung, Erfahrung und geeigneten Prüfmitteln. Unterwiesene Personen dürfen nur unter
+            Aufsicht der Fachkraft unterstützen.
+          </p>
+        </details>
+        <details>
+          <summary>Was wird bei der Prüfung gemessen?</summary>
+          <p>
+            Nach DIN VDE 0701-0702 folgen auf die Sichtprüfung die Messung von Schutzleiterwiderstand
+            (Schutzklasse I), Isolationswiderstand sowie Schutzleiter-, Berührungs- oder
+            Ersatzableitstrom, abschließend eine Funktionsprüfung. Das Prüfgerät vergleicht die Werte
+            mit den Grenzwerten der Norm.
+          </p>
+        </details>
+        <details>
+          <summary>Was muss in einem Prüfprotokoll stehen?</summary>
+          <p>
+            Gerätekennung (Bezeichnung, Typ, Seriennummer, Standort), angewandte Norm, Ergebnis der
+            Sichtprüfung, die Messwerte, das Gesamtergebnis, Prüfdatum, nächste Frist sowie Name und
+            Unterschrift des Prüfers. Nur so ist die Prüfung lückenlos nachweisbar.
+          </p>
+        </details>
+        <details>
+          <summary>Ist die Prüfung gesetzlich Pflicht?</summary>
+          <p>
+            Ja. Aus BetrSichV und DGUV Vorschrift 3 ergibt sich die Pflicht des Arbeitgebers, elektrische
+            Betriebsmittel vor der ersten Inbetriebnahme und in regelmäßigen Abständen prüfen zu lassen
+            und das Ergebnis zu dokumentieren.
+          </p>
+        </details>
+        <details>
+          <summary>Was droht bei fehlender Prüfung?</summary>
+          <p>
+            Verstoß gegen den Arbeitsschutz. Bei einem Unfall kann der Unfallversicherungsträger Regress
+            fordern, der Versicherungsschutz kann eingeschränkt werden, und es drohen Bußgelder sowie im
+            Schadensfall haftungs- und strafrechtliche Folgen für die Verantwortlichen.
+          </p>
+        </details>
+        <details>
+          <summary>Was unterscheidet ortsfeste von ortsveränderlichen Betriebsmitteln?</summary>
+          <p>
+            Ortsveränderliche Geräte lassen sich im Betrieb bewegen — etwa Werkzeuge, Verlängerungs-
+            leitungen oder Computer mit Stecker. Ortsfeste Betriebsmittel sind fest angeschlossen oder zu
+            schwer zum Bewegen. Für beide gelten eigene Richtwerte für die Prüffristen.
+          </p>
+        </details>
+      </div>
+
+      <p class="disclaimer">
+        Dieser Ratgeber gibt einen allgemeinen Überblick und ersetzt keine Rechtsberatung und keine
+        Gefährdungsbeurteilung im Einzelfall. Maßgeblich sind stets die aktuellen Fassungen von BetrSichV,
+        DGUV Vorschrift 3, den zugehörigen DGUV-Informationen sowie der Normenreihe DIN VDE 0701-0702.
+        PrüfDex unterstützt bei der Dokumentation der Prüfung; die fachgerechte Durchführung obliegt der
+        prüfenden Elektrofachkraft.
+      </p>
+
+      <a class="backlink" href="index.html">← Zurück zur Startseite</a>
+    </article>
+  </div>
+
+  <footer>
+    <div class="wrap foot">
+      <span class="muted">© 2026 PrüfDex</span>
+      <span>
+        <a href="ratgeber-dguv-v3.html">Ratgeber</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="agb.html">AGB</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="konto-loeschung.html">Konto löschen</a>
+        <a href="mailto:2easy4trash@gmail.com">Kontakt</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
