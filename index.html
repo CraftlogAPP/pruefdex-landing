@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PrüfDex — DGUV-V3-Prüfung mobil & prüffest</title>
   <meta name="description" content="PrüfDex: Elektrogeräte per QR erfassen, DGUV-V3 / VDE 0701-0702 am Handy abhaken — prüffestes PDF-Protokoll, Prüfplakette und automatische Fristen-Erinnerung. Für Elektro-Handwerk und Prüfdienstleister." />
-  <meta name="robots" content="all" />
-  <meta name="theme-color" content="#0B1220" />
+  <meta name="theme-color" content="#090e1c" />
   <!-- seo:start -->
   <link rel="icon" type="image/png" href="/assets/pruefdex-icon.png" />
   <link rel="canonical" href="https://pruefdex.dexware.app/" />
@@ -25,578 +24,442 @@
   <meta name="twitter:image" content="https://pruefdex.dexware.app/assets/og-image.png" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PrüfDex","url":"https://pruefdex.dexware.app/","description":"PrüfDex: Elektrogeräte per QR erfassen, DGUV-V3 / VDE 0701-0702 am Handy abhaken — prüffestes PDF-Protokoll, Prüfplakette und automatische Fristen-Erinnerung. Für Elektro-Handwerk und Prüfdienstleister.","operatingSystem":"Android","applicationCategory":"BusinessApplication","image":"https://pruefdex.dexware.app/assets/og-image.png","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Kostenlos starten, Pro-Abo in der App"},"publisher":{"@type":"Organization","name":"Dexware","url":"https://dexware.app/"}}</script>
   <!-- seo:end -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wie oft müssen Elektrogeräte geprüft werden?","acceptedAnswer":{"@type":"Answer","text":"Das legt der Unternehmer in der Gefährdungsbeurteilung fest. Richtwerte der DGUV: Büro bis zu 24 Monate, Werkstatt 6 bis 12 Monate, Baustelle 3 Monate. Mehr im Ratgeber Prüffristen."}},{"@type":"Question","name":"Wer darf die DGUV-V3-Prüfung durchführen?","acceptedAnswer":{"@type":"Answer","text":"Eine Elektrofachkraft bzw. eine zur Prüfung befähigte Person nach TRBS 1203, mit geeigneten, kalibrierten Prüfgeräten. Unterwiesene Personen dürfen nur einzelne Handgriffe unter deren Aufsicht übernehmen. PrüfDex dokumentiert die Prüfung und erzeugt Protokoll und Plakette. Mehr im Ratgeber DGUV V3."}},{"@type":"Question","name":"Eignet sich PrüfDex für Prüfdienstleister?","acceptedAnswer":{"@type":"Answer","text":"Ja. Mit Pro verwaltest du mehrere Kunden und Standorte getrennt und setzt dein eigenes Branding ins Protokoll."}},{"@type":"Question","name":"Gibt es PrüfDex auch am PC?","acceptedAnswer":{"@type":"Answer","text":"Ja — im Dexware-Dashboard siehst du Kunden, Geräte mit Prüffristen-Ampel und Prüflisten-PDF im Browser."}},{"@type":"Question","name":"Wo liegen meine Daten?","acceptedAnswer":{"@type":"Answer","text":"Auf Servern in der EU. Für die Typenschild-Erkennung wird nur das jeweilige Foto verarbeitet — Details in der Datenschutzerklärung."}}]}</script>
+  <link rel="preload" href="assets/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
   <style>
+    @font-face { font-family: 'Inter'; src: url('assets/inter-latin-var.woff2') format('woff2');
+      font-weight: 100 900; font-style: normal; font-display: swap; }
     :root {
-      --bg: #0B1220; --surface: #131C2E; --surface2: #0F1726; --border: #27334A;
-      --text: #E7ECF3; --muted: #9AA7BD;
-      --blue: #2563EB; --blue2: #5B8DF7; --glow: rgba(37,99,235,.18);
-      --green: #22C55E;
+      --accent: #2F6BF2;
+      --on-accent: #fff;
+      --radius: 16px;
+      --wrap: 1120px;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background:
-        radial-gradient(1100px 620px at 50% -140px, rgba(37,99,235,.22), transparent 65%),
-        radial-gradient(800px 520px at 92% 10%, rgba(91,141,247,.12), transparent 62%),
-        radial-gradient(800px 520px at 8% 60%, rgba(37,99,235,.08), transparent 60%),
-        var(--bg);
-      background-attachment: fixed;
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    html.light {
+      --bg: #ffffff;
+      --bg-soft: color-mix(in oklab, #f7f7f9 96%, var(--accent));
+      --surface: #ffffff;
+      --border: color-mix(in oklab, #e7e7eb 94%, var(--accent));
+      --ink: #0d0d12;
+      --muted: #5c5c69;
+      --accent-text: color-mix(in oklab, var(--accent) 82%, #000);
+      --accent-soft: color-mix(in oklab, var(--accent) 10%, #fff);
+      --card: var(--surface);
+      --shadow: 0 1px 2px rgba(16,16,24,.04), 0 8px 24px -12px rgba(16,16,24,.12);
+      color-scheme: light;
     }
-    body::before {
-      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 44px 44px;
-      -webkit-mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
-      mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
+    html.dark {
+      --bg: #090e1c;
+      --bg-soft: color-mix(in oklab, #090e1c 96%, #fff);
+      --surface: color-mix(in oklab, #090e1c 93%, #fff);
+      --card: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      --border: rgba(255,255,255,.085);
+      --ink: #f6f5f7;
+      --muted: #aaa4ad;
+      --accent-text: color-mix(in oklab, var(--accent) 70%, #fff);
+      --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -16px rgba(0,0,0,.6);
+      color-scheme: dark;
     }
-    a { color: #8FB4FF; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+    body { background: var(--bg); color: var(--ink);
+      font: 400 16px/1.6 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-feature-settings: 'cv11', 'ss01'; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: var(--accent-text); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    img { max-width: 100%; }
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+    @media (max-width: 600px) { .wrap { padding: 0 16px; } }
+    .i { width: 20px; height: 20px; flex: none; }
 
-    /* Sticky glass header */
-    .sitehead {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(11,18,32,.72);
-      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    header { padding: 14px 0; display: flex; align-items: center; gap: 12px; }
-    .logo { width: 38px; height: 38px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
-      box-shadow: 0 6px 18px rgba(8,16,40,.5); }
-    .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .brand { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
-    .nav-spacer { flex: 1; }
-    .nav a { color: var(--muted); font-size: 14px; margin-left: 20px; }
-    .nav a:hover { color: var(--text); text-decoration: none; }
-    @media (max-width: 640px) { .nav { display: none; } }
+    /* Kopfzeile */
+    .top { position: sticky; top: 0; z-index: 40; background: color-mix(in oklab, var(--bg) 82%, transparent);
+      -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px);
+      border-bottom: 1px solid transparent; transition: border-color .2s; }
+    .top.scrolled { border-bottom-color: var(--border); }
+    .top .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 650; font-size: 17px; letter-spacing: -.01em; }
+    .brand:hover { text-decoration: none; }
+    .brand img { width: 32px; height: 32px; border-radius: 8px; }
+    .brand .wm span { color: var(--accent-text); }
+    .top nav { display: flex; gap: 24px; margin-left: auto; }
+    .top nav a { color: var(--muted); font-size: 14.5px; font-weight: 500; }
+    .top nav a:hover { color: var(--ink); text-decoration: none; }
+    @media (max-width: 760px) { .top nav { display: none; } .top .btn { margin-left: auto; } }
+
+    /* Knöpfe */
+    .btn { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 22px; border-radius: 12px;
+      font-weight: 600; font-size: 15.5px; background: var(--accent); color: var(--on-accent);
+      box-shadow: 0 1px 0 rgba(255,255,255,.18) inset, 0 6px 20px -8px color-mix(in oklab, var(--accent) 70%, transparent);
+      transition: transform .15s, box-shadow .15s, background .15s; }
+    .btn:hover { text-decoration: none; transform: translateY(-1px);
+      box-shadow: 0 1px 0 rgba(255,255,255,.18) inset, 0 10px 26px -8px color-mix(in oklab, var(--accent) 80%, transparent); }
+    .btn.sm { height: 38px; padding: 0 16px; font-size: 14px; border-radius: 10px; }
+    .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--border); }
+    .btn.ghost:hover { background: var(--bg-soft); }
+    .btn .play { width: 14px; height: 14px; fill: currentColor; stroke: none; }
 
     /* Hero */
-    .hero { padding: 64px 0 40px; text-align: center; }
-    .badge {
-      display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: .5px;
-      color: #BFD3FF; background: rgba(37,99,235,.14); border: 1px solid rgba(91,141,247,.35);
-      padding: 7px 14px; border-radius: 999px; margin-bottom: 24px;
-    }
-    h1 {
-      font-size: clamp(34px, 5.6vw, 50px); font-weight: 850; letter-spacing: -1.4px; line-height: 1.1;
-      max-width: 780px; margin: 0 auto 18px;
-    }
-    h1 .hl { background: linear-gradient(120deg, #9DC0FF, var(--blue2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .sub { font-size: 18px; color: var(--muted); max-width: 620px; margin: 0 auto 30px; }
-    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-block; font-size: 15.5px; font-weight: 650; padding: 14px 26px;
-      border-radius: 12px; border: 1px solid transparent; cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .btn-primary { background: linear-gradient(135deg, var(--blue2), var(--blue)); color: #fff;
-      box-shadow: 0 10px 30px rgba(37,99,235,.35); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(37,99,235,.45); text-decoration: none; }
-    .btn-ghost { background: rgba(255,255,255,.03); color: var(--text); border-color: var(--border); }
-    .btn-ghost:hover { border-color: var(--blue2); text-decoration: none; }
-    .hero-note { font-size: 13px; color: var(--muted); margin-top: 18px; }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .hero > * { opacity: 0; transform: translateY(16px); animation: rise .7s cubic-bezier(.22,.61,.36,1) forwards; }
-      .hero > *:nth-child(2) { animation-delay: .08s; }
-      .hero > *:nth-child(3) { animation-delay: .16s; }
-      .hero > *:nth-child(4) { animation-delay: .24s; }
-      .hero > *:nth-child(5) { animation-delay: .32s; }
-      .hero > *:nth-child(6) { animation-delay: .40s; }
-      @keyframes rise { to { opacity: 1; transform: none; } }
+    .hero { position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: -20% -10% auto 40%; height: 120%; z-index: -1; pointer-events: none;
+      background: radial-gradient(closest-side, color-mix(in oklab, var(--accent) 22%, transparent), transparent 75%); }
+    .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 40px; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--accent-text);
+      background: var(--accent-soft); padding: 6px 12px; border-radius: 999px; margin-bottom: 22px; }
+    h1 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.05; font-weight: 750; letter-spacing: -.035em; }
+    h1 em { font-style: normal; color: var(--accent-text); }
+    .sub { margin-top: 20px; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 520px; }
+    .sub strong { color: var(--ink); font-weight: 600; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hint { margin-top: 12px; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .hint .i { width: 15px; height: 15px; }
+    .ticks { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .ticks li { list-style: none; display: flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 500; }
+    .ticks .i { width: 17px; height: 17px; color: var(--accent-text); }
+    .shots { position: relative; height: 560px; }
+    .shots .phone { position: absolute; }
+    .shots .phone.a { left: 4%; top: 0; z-index: 2; }
+    .shots .phone.b { right: 0; top: 64px; transform: scale(.9); transform-origin: top right; opacity: .96; }
+    @media (max-width: 900px) {
+      .hero .wrap { grid-template-columns: 1fr; gap: 36px; padding-top: 36px; }
+      .shots { height: 380px; max-width: 420px; width: 100%; margin: 0 auto;
+        -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
+      .shots .phone { --pw: 210px; }
+      .shots .phone.a { left: 2%; } .shots .phone.b { top: 40px; }
     }
 
-    /* Stats strip */
-    .stats { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
-      margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--border); }
-    .stat .n { font-size: 24px; font-weight: 800; letter-spacing: -.5px; color: var(--blue2); }
-    .stat .l { color: var(--muted); font-size: 13px; }
+    /* Handyrahmen */
+    .phone { --pw: 262px; width: var(--pw); padding: 8px; border-radius: calc(var(--pw) * .16);
+      background: linear-gradient(160deg, #2b2b31, #0e0e11 40%);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 0 0 1px rgba(0,0,0,.5), 0 40px 70px -30px rgba(10,10,20,.55), 0 18px 30px -18px rgba(10,10,20,.35); }
+    .screen { position: relative; border-radius: calc(var(--pw) * .13); overflow: hidden; background: var(--bar); padding-top: calc(var(--pw) * .1); }
+    .screen::before { content: ''; position: absolute; top: calc(var(--pw) * .03); left: 50%; transform: translateX(-50%);
+      width: 30%; height: calc(var(--pw) * .075); border-radius: 99px; background: #000; }
+    .screen img { display: block; width: 100%; height: auto; }
 
-    /* Sections */
-    section { padding: 48px 0; }
-    .eyebrow { color: var(--blue2); font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
-    h2 { font-size: clamp(24px, 4vw, 30px); font-weight: 850; letter-spacing: -0.6px; margin-bottom: 14px; }
-    .lead { color: var(--muted); font-size: 16px; max-width: 620px; margin-bottom: 28px; }
-
-    /* Steps / Features grid */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .card {
-      position: relative; overflow: hidden;
-      background: linear-gradient(180deg, var(--surface), var(--surface2));
-      border: 1px solid var(--border); border-radius: 18px;
-      padding: 24px 20px;
-      transition: transform .18s ease, border-color .18s ease;
+    /* Abschnitte */
+    section { padding: 80px 0; }
+    section.soft { background: var(--bg-soft); }
+    @media (max-width: 700px) {
+      section { padding: 52px 0; }
+      .head { margin-bottom: 24px; }
+      .lead { font-size: 16px; }
+      .sub { font-size: 16.5px; }
+      .cta .btn { flex: 1 1 100%; justify-content: center; }
+      .ticks { gap: 8px 16px; }
+      .rules li { padding: 14px 16px; grid-template-columns: 32px 1fr; gap: 12px; font-size: 14.5px; }
+      .rules .ic { width: 32px; height: 32px; }
     }
-    .card::before { content: ''; position: absolute; inset: 0;
-      background: radial-gradient(340px 160px at 100% 0%, var(--glow), transparent 70%); opacity: .9; }
-    .card > * { position: relative; }
-    .card:hover { transform: translateY(-4px); border-color: var(--blue2); }
-    .card .ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(37,99,235,.16);
-      border: 1px solid rgba(91,141,247,.25); display: grid; place-items: center; margin-bottom: 14px; font-size: 21px; }
-    .card h3 { font-size: 17px; font-weight: 750; margin-bottom: 7px; }
-    .card p { color: var(--muted); font-size: 14.5px; }
-    .step-n { color: var(--blue2); font-weight: 800; font-size: 12px; letter-spacing: 1px; margin-bottom: 2px; }
+    .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--accent-text); margin-bottom: 10px; }
+    h2 { font-size: clamp(27px, 3.4vw, 38px); line-height: 1.12; font-weight: 720; letter-spacing: -.03em; max-width: 760px; }
+    .lead { margin-top: 14px; font-size: 17px; color: var(--muted); max-width: 620px; }
+    .lead strong { color: var(--ink); font-weight: 600; }
+    .head { margin-bottom: 40px; }
 
-    /* Cross-Promo */
-    .promo-list { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 720px; }
-    .promo {
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-      background: linear-gradient(180deg, var(--surface), var(--surface2));
-      border: 1px solid var(--border); border-radius: 16px;
-      padding: 14px 16px; color: inherit;
-      transition: border-color .18s ease, transform .18s ease;
+    /* Pflicht */
+    .duty { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+    .rules { list-style: none; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .rules li { display: grid; grid-template-columns: 36px 1fr; gap: 14px; padding: 18px 22px; border-top: 1px solid var(--border); font-size: 15px; color: var(--muted); }
+    .rules li:first-child { border-top: 0; }
+    .rules b { display: block; color: var(--ink); font-weight: 600; font-size: 15.5px; margin-bottom: 1px; }
+    .ic { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); }
+    @media (max-width: 860px) { .duty { grid-template-columns: 1fr; gap: 28px; } }
+
+    /* Funktionen */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+    .feature .ic { margin-bottom: 16px; }
+    .feature h3 { font-size: 16.5px; font-weight: 640; letter-spacing: -.01em; margin-bottom: 6px; }
+    .feature p { font-size: 15px; color: var(--muted); line-height: 1.55; }
+    @media (max-width: 900px) { .features { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .features { grid-template-columns: 1fr; gap: 10px; }
+      .feature { padding: 16px; display: grid; grid-template-columns: 36px 1fr; gap: 0 14px; }
+      .feature .ic { margin: 0; grid-row: span 2; } .feature p { font-size: 14.5px; } }
+
+    /* Ablauf */
+    .flow { display: grid; grid-template-columns: 1fr auto; gap: 72px; align-items: center; }
+    .steps { list-style: none; counter-reset: s; margin-top: 32px; }
+    .steps li { counter-increment: s; position: relative; padding: 0 0 26px 56px; }
+    .steps li:last-child { padding-bottom: 0; }
+    .steps li::before { content: counter(s); position: absolute; left: 0; top: -2px; width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center; font-weight: 650; font-size: 15px; background: var(--accent); color: var(--on-accent); }
+    .steps li:not(:last-child)::after { content: ''; position: absolute; left: 17.5px; top: 40px; bottom: 6px; width: 1px; background: var(--border); }
+    .steps b { display: block; font-size: 17px; font-weight: 640; margin-bottom: 4px; }
+    .steps p { color: var(--muted); font-size: 15.5px; }
+    .flow .phone { --pw: 280px; }
+    @media (max-width: 860px) { .flow { grid-template-columns: 1fr; } .flow > div:last-child { display: none; } .steps { margin-top: 24px; } }
+
+    /* Preise */
+    .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .plan { position: relative; display: flex; flex-direction: column; min-width: 0; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+    .plan.pro { border-color: color-mix(in oklab, var(--accent) 55%, var(--border)); box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 55%, transparent), var(--shadow); }
+    .plan .badge { position: absolute; top: -11px; left: 28px; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px; background: var(--accent); color: var(--on-accent); }
+    .plan h3 { font-size: 15px; font-weight: 600; color: var(--muted); }
+    .price { margin-top: 10px; font-size: 38px; font-weight: 720; letter-spacing: -.03em; line-height: 1.1; }
+    .price small { font-size: 15px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+    .per { font-size: 14px; color: var(--muted); margin-top: 4px; min-height: 22px; }
+    .plan ul { list-style: none; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); display: grid; gap: 10px; }
+    .plan li { display: flex; gap: 10px; font-size: 15px; }
+    .plan li .i { width: 18px; height: 18px; margin-top: 2px; color: var(--accent-text); }
+    .plan.suite { color: #f4f4f6; border: 1px solid transparent;
+      background: linear-gradient(180deg, #121218, #0b0b0f) padding-box, linear-gradient(140deg, #3b82f6, #8b5cf6 55%, var(--accent)) border-box; }
+    .plan.suite h3, .plan.suite .per, .plan.suite .price small { color: #a3a3ad; }
+    .plan.suite ul { border-color: rgba(255,255,255,.1); }
+    .plan.suite li .i { color: #f4f4f6; }
+    .icons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 22px; }
+    .icons img { width: 26px; height: 26px; border-radius: 7px; }
+    .fine { margin-top: 20px; font-size: 13.5px; color: var(--muted); }
+    @media (max-width: 960px) { .plans { grid-template-columns: 1fr; max-width: 480px; } }
+
+    /* FAQ */
+    .faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+    .faq details { border-bottom: 1px solid var(--border); }
+    .faq details:first-child { border-top: 1px solid var(--border); }
+    .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; align-items: center;
+      padding: 18px 2px; font-weight: 600; font-size: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary .i { color: var(--muted); transition: transform .2s; }
+    .faq details[open] summary .i { transform: rotate(180deg); }
+    .faq .a { padding: 0 2px 20px; color: var(--muted); font-size: 15.5px; max-width: 640px; }
+    .ask { margin-top: 18px; color: var(--muted); font-size: 15px; display: flex; align-items: center; gap: 8px; }
+    @media (max-width: 860px) { .faq { grid-template-columns: 1fr; gap: 24px; } }
+
+    /* Familie */
+    .family { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 32px; }
+    .family a { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 6px 14px; border-radius: 14px;
+      color: var(--ink); text-align: center; transition: background .15s; }
+    .family a:hover { background: var(--surface); text-decoration: none; box-shadow: var(--shadow); }
+    .family img { width: 44px; height: 44px; border-radius: 11px; }
+    .family b { font-size: 13.5px; font-weight: 600; line-height: 1.2; }
+    .family small { font-size: 12px; color: var(--muted); line-height: 1.3; }
+    .family-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+    @media (max-width: 900px) { .family { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 480px) { .family { grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 20px; } .family a { padding: 10px 2px; gap: 6px; }
+      .family img { width: 40px; height: 40px; } .family b { font-size: 11.5px; } .family small { display: none; } }
+
+    /* Prüfpunkte (optional) */
+    .points { margin-top: 16px; padding: 22px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); }
+    .points p { font-size: 15px; color: var(--muted); margin-bottom: 14px; }
+    .points p b { color: var(--ink); font-weight: 600; margin-right: 4px; }
+    .points ol { list-style: none; counter-reset: p; display: flex; flex-wrap: wrap; gap: 8px; }
+    .points li { counter-increment: p; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500;
+      padding: 5px 12px 5px 5px; border-radius: 99px; background: var(--bg-soft); border: 1px solid var(--border); }
+    .points li::before { content: counter(p); width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+      font-size: 12px; font-weight: 650; background: var(--accent-soft); color: var(--accent-text); }
+    @media (max-width: 600px) { .points { padding: 16px; } .points li { font-size: 13px; } }
+
+    /* Fußzeile */
+    footer { border-top: 1px solid var(--border); padding: 32px 0 40px; font-size: 14px; color: var(--muted); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--ink); }
+
+    /* Handy: Feinschliff (muss nach den Grundregeln stehen) */
+    @media (max-width: 700px) {
+      .duty { gap: 22px; }
+      .plan { padding: 22px; }
+      .plan ul { margin-top: 16px; padding-top: 14px; gap: 7px; }
+      .price { font-size: 34px; }
+      .plans { gap: 20px; }
+      .faq summary { padding: 15px 2px; font-size: 15.5px; }
+      .rules li { padding: 13px 16px; }
+      .family-row .btn { order: 2; }
     }
-    .promo:hover { border-color: var(--blue2); transform: translateY(-2px); text-decoration: none; }
-    .promo::before { content: ''; position: absolute; inset: 0;
-      background: radial-gradient(300px 140px at 100% 0%, var(--glow), transparent 70%); opacity: .7; }
-    .promo > * { position: relative; }
-    .promo-ico {
-      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0; overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
-    }
-    .promo-ico img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .promo-body { flex: 1; min-width: 180px; }
-    .promo-body h3 { font-size: 16px; font-weight: 750; margin-bottom: 3px; color: var(--text); }
-    .promo-body p { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
-    .promo-body h3 .soon { font-size: 10.5px; font-weight: 700; color: #BFD3FF; background: rgba(37,99,235,.18); padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
-    .promo-cta {
-      flex-shrink: 0; font-size: 13.5px; font-weight: 650; color: var(--blue2);
-      background: rgba(37,99,235,.12); border: 1px solid rgba(91,141,247,.35); border-radius: 10px;
-      padding: 9px 16px; white-space: nowrap;
-    }
 
-    /* Why list */
-    .why { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
-    @media (max-width: 700px) { .why { grid-template-columns: 1fr; } }
-    .why-item { display: flex; gap: 12px; align-items: flex-start;
-      background: linear-gradient(180deg, var(--surface), var(--surface2));
-      border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
-    .check { color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
-    .why-item b { font-weight: 700; }
-    .why-item span { color: var(--muted); font-size: 14.5px; }
-
-    /* Pricing */
-    .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 680px; }
-    @media (max-width: 700px) { .price-grid { grid-template-columns: 1fr; } }
-    .plan { position: relative; overflow: hidden;
-      background: linear-gradient(180deg, var(--surface), var(--surface2));
-      border: 1px solid var(--border); border-radius: 18px; padding: 28px 24px;
-      transition: transform .18s ease; }
-    .plan::before { content: ''; position: absolute; inset: 0;
-      background: radial-gradient(340px 160px at 100% 0%, var(--glow), transparent 70%); opacity: .7; }
-    .plan > * { position: relative; }
-    .plan:hover { transform: translateY(-4px); }
-    .plan.pro { border-color: var(--blue2); box-shadow: 0 0 0 1px rgba(91,141,247,.4), 0 18px 44px rgba(37,99,235,.15); }
-    .plan .name { font-weight: 750; font-size: 16px; }
-    .plan .amount { font-size: 38px; font-weight: 850; letter-spacing: -1px; margin: 10px 0 4px; }
-    .plan.pro .amount { color: var(--blue2); }
-    .plan .amount small { font-size: 15px; font-weight: 600; color: var(--muted); }
-    .plan ul { list-style: none; margin-top: 16px; }
-    .plan li { color: var(--muted); font-size: 14.5px; padding: 5px 0 5px 22px; position: relative; }
-    .plan li::before { content: "✓"; color: var(--green); position: absolute; left: 0; font-weight: 800; }
-    .plan .tag { display: inline-block; font-size: 11px; font-weight: 700; color: #BFD3FF; background: rgba(37,99,235,.18); border: 1px solid rgba(91,141,247,.35); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
-
-    /* Dexware Suite */
-    .suite { background: linear-gradient(180deg, rgba(37,99,235,.12), var(--surface2)); border: 2px solid var(--blue2);
-      border-radius: 22px; padding: 34px 30px; max-width: 900px; box-shadow: 0 0 0 1px rgba(91,141,247,.3), 0 24px 60px rgba(37,99,235,.16); }
-    .suite-pill { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
-      color: #fff; background: var(--blue); padding: 6px 14px; border-radius: 999px; }
-    .suite h3.st { font-size: 26px; font-weight: 850; letter-spacing: -.6px; margin-top: 16px; }
-    .suite .sl { color: var(--muted); font-size: 15px; margin-top: 10px; max-width: 720px; }
-    .suite-prices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-    @media (max-width: 700px) { .suite-prices { grid-template-columns: 1fr; } }
-    .sp { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; position: relative; }
-    .sp.best { border-color: var(--blue2); box-shadow: 0 12px 34px rgba(37,99,235,.18); }
-    .sp-badge { position: absolute; top: -12px; right: 16px; font-size: 11.5px; font-weight: 800;
-      color: #052e12; background: #4ADE80; padding: 4px 11px; border-radius: 999px; }
-    .sp-name { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-    .sp.best .sp-name { color: var(--blue2); }
-    .sp-strike { color: var(--muted); font-size: 14px; text-decoration: line-through; margin-top: 10px; }
-    .sp-amount { font-size: 32px; font-weight: 850; letter-spacing: -.8px; }
-    .sp-amount small { font-size: 14px; font-weight: 600; color: var(--muted); }
-    .sp-note { color: var(--muted); font-size: 13px; margin-top: 4px; }
-    .suite-icons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
-    .suite-icons img { width: 42px; height: 42px; border-radius: 11px; border: 1px solid var(--border); background: var(--surface); }
-    .suite-list { list-style: none; margin-top: 18px; }
-    .suite-list li { font-size: 14.5px; padding: 5px 0 5px 22px; position: relative; color: var(--text); }
-    .suite-list li::before { content: "★"; color: var(--blue2); position: absolute; left: 0; }
-    .suite-how { color: var(--muted); font-size: 13.5px; margin-top: 18px; margin-bottom: 20px; }
-
-    /* CTA band */
-    .band { background: linear-gradient(135deg, #1b2c4d, #101a2c); border: 1px solid rgba(91,141,247,.35);
-      border-radius: 22px; padding: 48px 30px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
-    .band h2 { margin-bottom: 10px; }
-    .band p { color: var(--muted); margin-bottom: 24px; }
-
-    /* Scroll reveal */
-    .reveal.pre { opacity: 0; transform: translateY(18px); }
-    .reveal.in { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
-    .grid .reveal.in:nth-child(2), .why .reveal.in:nth-child(2), .promo-list .reveal.in:nth-child(2) { transition-delay: .07s; }
-    .grid .reveal.in:nth-child(3), .why .reveal.in:nth-child(3), .promo-list .reveal.in:nth-child(3) { transition-delay: .14s; }
-    .grid .reveal.in:nth-child(4), .why .reveal.in:nth-child(4), .promo-list .reveal.in:nth-child(4) { transition-delay: .21s; }
-    .why .reveal.in:nth-child(5), .promo-list .reveal.in:nth-child(5) { transition-delay: .28s; }
-    .why .reveal.in:nth-child(6), .promo-list .reveal.in:nth-child(6) { transition-delay: .35s; }
-
-    /* Footer */
-    footer { border-top: 1px solid var(--border); margin-top: 30px; padding: 28px 0 48px; }
-    .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .foot .muted { color: var(--muted); font-size: 13px; }
-    .foot a { color: var(--muted); font-size: 13px; margin-left: 18px; }
-
-    .disclaimer { color: var(--muted); font-size: 12.5px; max-width: 760px; margin: 20px auto 0; text-align: center; }
+    /* Einblenden beim Scrollen — nur mit JS und ohne reduzierte Bewegung */
+    .js .rv { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+    .js .rv.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
   </style>
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <div class="sitehead">
+  <header class="top">
     <div class="wrap">
-      <header>
-        <span class="logo"><img src="assets/pruefdex-icon.png" alt="PrüfDex" /></span>
-        <span class="brand">PrüfDex</span>
-        <span class="nav-spacer"></span>
-        <nav class="nav">
-          <a href="#so">So funktioniert's</a>
-          <a href="#warum">Warum PrüfDex</a>
-          <a href="#preise">Preise</a>
-          <a href="ratgeber-dguv-v3.html">Ratgeber</a>
-        </nav>
-      </header>
+      <a class="brand" href="/" aria-label="PrüfDex Startseite"><img src="assets/apps/pruefdex.webp" alt="" width="32" height="32" /><span class="wm">Prüf<span>Dex</span></span></a>
+      <nav aria-label="Seitennavigation"><a href="#funktionen">Funktionen</a><a href="#preise">Preise</a><a href="#faq">FAQ</a><a href="ratgeber-dguv-v3.html">Ratgeber</a></nav>
+      <a class="btn sm" href="https://play.google.com/store/apps/details?id=de.pruefdex.app" target="_blank" rel="noopener">App laden</a>
     </div>
-  </div>
+  </header>
 
-  <!-- HERO -->
-  <div class="wrap">
+  <main>
     <div class="hero">
-      <span class="badge">DGUV V3 · VDE 0701-0702 · BetrSichV</span>
-      <h1>Geräteprüfung am Handy — <span class="hl">prüffest in unter einer Minute</span>.</h1>
-      <p class="sub">
-        Elektrogerät per QR scannen, Sicht- und Messprüfung abhaken — PrüfDex erzeugt das
-        prüffeste DGUV-V3-Protokoll samt Prüfplakette und erinnert automatisch an die nächste Frist.
-      </p>
-      <div class="cta-row">
-        <a href="https://play.google.com/store/apps/details?id=de.pruefdex.app" target="_blank" rel="noopener" class="btn btn-primary">Kostenlos starten</a>
-        <a href="#so" class="btn btn-ghost">So funktioniert's</a>
-      </div>
-      <p class="hero-note">Papierordner &amp; Excel-Listen raus. Mobil &amp; rechtssicher rein.</p>
-      <div class="stats">
-        <div class="stat"><div class="n">&lt; 1 Min.</div><div class="l">pro Routine-Gerät</div></div>
-        <div class="stat"><div class="n">PDF + Plakette</div><div class="l">automatisch erzeugt</div></div>
-        <div class="stat"><div class="n">Fristen-Automatik</div><div class="l">nie wieder überfällig</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SO FUNKTIONIERT'S -->
-  <section id="so">
-    <div class="wrap">
-      <div class="eyebrow">So funktioniert's</div>
-      <h2>Vier Schritte, ein Protokoll</h2>
-      <p class="lead">Kein Schulungsaufwand. Der Ablauf folgt genau dem, was die Prüfung verlangt.</p>
-      <div class="grid">
-        <div class="card reveal">
-          <div class="ico">📷</div>
-          <div class="step-n">SCHRITT 1</div>
-          <h3>Scannen</h3>
-          <p>Gerät per QR-Etikett öffnen oder neu anlegen — Bezeichnung, Typ, Seriennummer, Standort.</p>
-        </div>
-        <div class="card reveal">
-          <div class="ico">✅</div>
-          <div class="step-n">SCHRITT 2</div>
-          <h3>Prüfen</h3>
-          <p>Sichtprüfung abhaken, Messwerte eintragen (Schutzleiter-, Isolationswiderstand, Ersatzableitstrom).</p>
-        </div>
-        <div class="card reveal">
-          <div class="ico">📄</div>
-          <div class="step-n">SCHRITT 3</div>
-          <h3>Protokoll</h3>
-          <p>Prüffestes PDF mit allen Pflichtangaben plus druckbare Prüfplakette mit QR-Code — automatisch.</p>
-        </div>
-        <div class="card reveal">
-          <div class="ico">🔔</div>
-          <div class="step-n">SCHRITT 4</div>
-          <h3>Frist im Blick</h3>
-          <p>Nächster Prüftermin wird berechnet. Anstehende und überfällige Geräte auf einen Blick.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WARUM -->
-  <section id="warum">
-    <div class="wrap">
-      <div class="eyebrow">Warum PrüfDex</div>
-      <h2>Für den Betrieb, nicht für die IT-Abteilung</h2>
-      <p class="lead">Gemacht für Elektro-Handwerk und Prüfdienstleister, die schnell und sauber dokumentieren müssen — ohne überladene Enterprise-Software.</p>
-      <div class="why">
-        <div class="why-item reveal"><span class="check">✓</span><span><b>Pflicht erfüllt:</b> Protokolle mit allen DGUV-V3-/VDE-Pflichtangaben — lückenlos und prüffest.</span></div>
-        <div class="why-item reveal"><span class="check">✓</span><span><b>Mobil-first:</b> Die ganze Prüfung läuft am Handy. Kein Laptop, kein Papier auf der Baustelle.</span></div>
-        <div class="why-item reveal"><span class="check">✓</span><span><b>QR-Plaketten:</b> Jedes Gerät bekommt sein Etikett — nächste Prüfung ist ein Scan entfernt.</span></div>
-        <div class="why-item reveal"><span class="check">✓</span><span><b>Mandantenfähig:</b> Mehrere Kunden / Standorte sauber getrennt — ideal für Prüfdienstleister.</span></div>
-        <div class="why-item reveal"><span class="check">✓</span><span><b>Fristen-Automatik:</b> Nie wieder eine Wiederholungsprüfung übersehen.</span></div>
-        <div class="why-item reveal"><span class="check">✓</span><span><b>Schnell:</b> Routine-Gerät in unter einer Minute dokumentiert.</span></div>
-        <div class="why-item reveal"><span class="check">✓</span><span><b>Für den DACH-Raum:</b> Gezielt auf die gesetzlichen Vorgaben in Deutschland, Österreich und der Schweiz ausgelegt (DGUV V3, VDE 0701-0702, BetrSichV).</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PREISE -->
-  <section id="preise">
-    <div class="wrap">
-      <div class="eyebrow">Preise</div>
-      <h2>Klein anfangen, mitwachsen</h2>
-      <p class="lead">Free zum Ausprobieren, Pro für den produktiven Einsatz. Keine Vertragsbindung.</p>
-      <div class="price-grid">
-        <div class="plan reveal">
-          <div class="name">Free</div>
-          <div class="amount">€0</div>
-          <div class="muted" style="color:var(--muted);font-size:13px;">zum Testen</div>
-          <ul>
-            <li>Bis zu 10 Geräte</li>
-            <li>Bis zu 10 Prüfungen</li>
-            <li>PDF-Protokoll &amp; Plakette</li>
-            <li>Fristen-Übersicht</li>
-          </ul>
-        </div>
-        <div class="plan pro reveal">
-          <div class="name">Pro <span class="tag">Empfohlen</span></div>
-          <div class="amount">€14,99<small> / Monat</small></div>
-          <div class="muted" style="color:var(--muted);font-size:13px;">oder €119,99 / Jahr · 4 Monate gratis</div>
-          <ul>
-            <li>Unbegrenzt Geräte &amp; Prüfungen</li>
-            <li>Eigenes Branding im Protokoll</li>
-            <li>Mehrere Mandanten / Standorte</li>
-            <li>Fristen-Erinnerungen</li>
-            <li>Voller PDF-Export</li>
-          </ul>
-        </div>
-      </div>
-      <p class="muted" style="font-size:13px;margin-top:14px;color:var(--muted);">Preise vorläufig, Feinjustierung nach Feedback.</p>
-
-      <!-- Web-Dashboard -->
-      <div class="suite" id="dashboard" style="margin-top:28px;">
-        <span class="suite-pill">💻 Neu: Web-Dashboard — inklusive</span>
-        <h3 class="st">PrüfDex auch am PC.</h3>
-        <p style="margin:10px 0 16px;opacity:.85">Kunden, Geräte mit Prüffristen-Ampel und Prüflisten-PDF nach DGUV V3 — direkt im Browser. Anmeldung mit deinem App-Konto — per Google oder E-Mail + Passwort.</p>
-        <a class="btn btn-primary" href="https://dashboard.dexware.app/app/pruefdex">Dashboard öffnen →</a>
-      </div>
-
-      <!-- Dexware Suite Bundle -->
-      <div class="suite" id="suite" style="margin-top:28px;">
-        <span class="suite-pill">Dexware Suite — ein Abo, alle Apps</span>
-        <h3 class="st">Alle 9 Dexware-Apps. Ein Abo.</h3>
-        <p class="sl">
-          Die Suite kostet so viel wie unsere teuerste Einzel-App — und schaltet <b>alle</b> Dexware-Apps
-          auf allen deinen Geräten frei. Neue Apps kommen automatisch dazu, ohne Aufpreis.
-        </p>
-        <div class="suite-prices">
-          <div class="sp">
-            <div class="sp-name">Monatlich</div>
-            <div class="sp-strike">über 90 € — alle Apps einzeln</div>
-            <div class="sp-amount">29,99 € <small>/ Monat</small></div>
-            <div class="sp-note">Der Preis unserer teuersten Einzel-App — über 65 % günstiger als alles einzeln.</div>
+      <div class="wrap">
+        <div>
+          <span class="kicker">DGUV V3 · VDE 0701-0702 · BetrSichV</span>
+          <h1>Geräteprüfung am Handy. <em>Prüffest in unter einer Minute.</em></h1>
+          <p class="sub">Elektrogerät per QR scannen, Sicht- und Messprüfung abhaken — PrüfDex erzeugt das <strong>DGUV-V3-Protokoll samt Prüfplakette</strong> und erinnert an die nächste Frist.</p>
+          <div class="cta">
+            <a class="btn" id="store-link" href="https://play.google.com/store/apps/details?id=de.pruefdex.app" target="_blank" rel="noopener"><svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>Kostenlos bei Google Play</a>
+            <a class="btn ghost" href="#ablauf">So funktioniert's</a>
           </div>
-          <div class="sp best">
-            <span class="sp-badge">4 Monate geschenkt · −33 %</span>
-            <div class="sp-name">Jährlich</div>
-            <div class="sp-strike">statt 359,88 € (12 × 29,99 €)</div>
-            <div class="sp-amount">239,99 € <small>/ Jahr</small></div>
-            <div class="sp-note">Entspricht 20,00 € im Monat — du zahlst nur 8 von 12 Monaten.</div>
-          </div>
+          <p class="hint"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /><path d="M12 18h.01" /></svg>Android jetzt · iPhone & iPad bald</p>
+          <ul class="ticks"><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>< 1 Minute pro Gerät</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>PDF + QR-Plakette</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Fristen-Automatik</li></ul>
         </div>
-        <div class="suite-icons">
-          <img src="assets/gurtdex-icon.png" alt="GurtDex" title="GurtDex" />
-          <img src="assets/toredex-icon.png" alt="ToreDex" title="ToreDex" />
-          <img src="assets/geruestdex-icon.png" alt="GerüstDex" title="GerüstDex" />
-          <img src="assets/regaldex-icon.png" alt="RegalDex" title="RegalDex" />
-          <img src="assets/leiterdex-icon.png" alt="LeiterDex" title="LeiterDex" />
-          <img src="assets/feuerdex-icon.png" alt="FeuerDex" title="FeuerDex" />
-          <img src="assets/spieldex-icon.png" alt="SpielDex" title="SpielDex" />
-          <img src="assets/kfzdex-icon.png" alt="KfzDex" title="KfzDex" />
-          <img src="assets/pruefdex-icon.png" alt="PrüfDex" title="PrüfDex" />
-          <img src="assets/schutzheld-icon.png" alt="SchutzDex" title="SchutzDex" />
-          <img src="assets/baumdex-icon.png" alt="BaumDex" title="BaumDex" />
-          <img src="assets/winterdex-icon.png" alt="WinterDex" title="WinterDex" />
-          <img src="assets/routelog-icon.png" alt="TourDex" title="TourDex" />
-          <img src="assets/craftlog-icon.png" alt="CraftDex" title="CraftDex" />
-          <img src="assets/archio-icon.png" alt="DokuDex" title="DokuDex" />
+        <div class="shots" aria-label="Screenshots der App">
+          <div class="phone a"><div class="screen" style="--bar:#1d4ed8"><img src="assets/shots/hero-1.webp" width="600" height="1107" alt="PrüfDex: Gerät mit QR-Prüfplakette und nächster Prüfung" decoding="async"></div></div>
+          <div class="phone b"><div class="screen" style="--bar:#1d4ed8"><img src="assets/shots/hero-2.webp" width="600" height="1107" alt="PrüfDex: Prüfung nach VDE 0701-0702 mit Sichtprüfung und Messwerten" decoding="async"></div></div>
         </div>
-        <ul class="suite-list">
-          <li>Alle 15 Apps inklusive — von UVV bis Winterdienst</li>
-          <li>Alle zukünftigen Dexware-Apps automatisch dabei</li>
-          <li>Einmal kaufen — in jeder App freigeschaltet</li>
-          <li>Jederzeit kündbar</li>
+      </div>
+    </div>
+
+    <section class="soft" id="pflicht">
+      <div class="wrap duty">
+        <div class="rv">
+          <p class="eyebrow">Prüffristen</p>
+          <h2>Jedes ortsveränderliche Gerät hat eine Frist</h2>
+          <p class="lead">Die Prüffrist legt der Unternehmer in der Gefährdungsbeurteilung fest. Die DGUV-Werte sind Richtwerte, an denen sich die meisten Betriebe orientieren. Gemacht für Elektro-Handwerk und Prüfdienstleister im DACH-Raum.</p>
+        </div>
+        <ul class="rules rv">
+          <li><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg></span><span><b>Büro und büroähnlich</b>Richtwert bis zu 24 Monate.</span></li>
+          <li><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg></span><span><b>Werkstatt und Fertigung</b>Üblich 6 bis 12 Monate.</span></li>
+          <li><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" /><path d="M14 6a6 6 0 0 1 6 6v3" /><path d="M4 15v-3a6 6 0 0 1 6-6" /><rect x="2" y="15" width="20" height="4" rx="1" /></svg></span><span><b>Baustelle</b>Richtwert 3 Monate.</span></li>
+          <li><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" /><path d="m9 13 2 2 4-4" /></svg></span><span><b>Protokoll je Gerät</b>Sichtprüfung, Messwerte, Ergebnis und Prüfer — mit allen Pflichtangaben.</span></li>
         </ul>
-        <p class="suite-how">Erhältlich direkt in jeder Dexware-App: einfach in der App auf „Pro werden" tippen und die Dexware Suite wählen.</p>
-        <a href="https://dexware.app/" target="_blank" rel="noopener" class="btn btn-primary">Mehr zur Dexware Suite →</a>
-        <p class="suite-how" style="margin-top:18px;margin-bottom:0;">💻 Fürs Web gibt's einen Haupteinstieg: <a href="https://dashboard.dexware.app">dashboard.dexware.app</a> — die Übersicht aller App-Dashboards. Dort wählst du einfach die App, deren Dashboard du öffnen willst.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA BAND -->
-  <section>
-    <div class="wrap">
-      <div class="band reveal">
-        <h2>Bereit, den Papierordner abzulösen?</h2>
-        <p>Lege dein erstes Gerät an und erstelle in Minuten dein erstes prüffestes Protokoll.</p>
-        <a href="https://play.google.com/store/apps/details?id=de.pruefdex.app" target="_blank" rel="noopener" class="btn btn-primary">App holen</a>
+    <section id="funktionen">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="eyebrow">Funktionen</p>
+          <h2>Für den Betrieb, nicht für die IT-Abteilung</h2>
+          <p class="lead">Schnell und sauber dokumentieren — ohne überladene Enterprise-Software.</p>
+        </div>
+        <div class="features">
+          <article class="feature rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1" /><rect width="5" height="5" x="16" y="3" rx="1" /><rect width="5" height="5" x="3" y="16" rx="1" /><path d="M21 16h-3a2 2 0 0 0-2 2v3" /><path d="M21 21v.01" /><path d="M12 7v3a2 2 0 0 1-2 2H7" /><path d="M3 12h.01" /><path d="M12 3h.01" /><path d="M12 16v.01" /><path d="M16 12h1" /><path d="M21 12v.01" /><path d="M12 21v-1" /></svg></span><h3>QR-Plaketten</h3><p>Jedes Gerät bekommt sein Etikett — die nächste Prüfung ist ein Scan entfernt.</p></article>
+          <article class="feature rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><path d="M7 12h10" /></svg></span><h3>Typenschild per Foto</h3><p>Foto vom Typenschild genügt: Hersteller, Typ und Seriennummer werden automatisch ausgefüllt.</p></article>
+          <article class="feature rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="m9 14 2 2 4-4" /></svg></span><h3>Prüfung nach VDE 0701-0702</h3><p>Sichtprüfung abhaken, Schutzleiter-, Isolationswiderstand und Ersatzableitstrom eintragen.</p></article>
+          <article class="feature rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></svg></span><h3>Prüffestes PDF</h3><p>Protokoll mit allen DGUV-V3-Pflichtangaben plus druckbare Prüfplakette — automatisch.</p></article>
+          <article class="feature rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg></span><h3>Mandantenfähig</h3><p>Mehrere Kunden und Standorte sauber getrennt — ideal für Prüfdienstleister.</p></article>
+          <article class="feature rv"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5" /><path d="M16 2v4" /><path d="M8 2v4" /><path d="M3 10h5" /><path d="M17.5 17.5 16 16.3V14" /><circle cx="16" cy="16" r="6" /></svg></span><h3>Fristen-Automatik</h3><p>Der nächste Prüftermin wird berechnet. Anstehende und überfällige Geräte auf einen Blick.</p></article>
+        </div>
       </div>
-      <p class="disclaimer">
-        PrüfDex unterstützt bei der Dokumentation der Prüfung. Die fachgerechte Durchführung der
-        Prüfung sowie die Eingabe korrekter Mess- und Sichtergebnisse obliegen der prüfenden
-        Elektrofachkraft. PrüfDex erfindet keine Messwerte.
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- MEHR VON UNS (Cross-Promo) -->
-  <section id="mehr">
-    <div class="wrap">
-      <div class="eyebrow">Die Dexware-Familie</div>
-      <h2>Entdecke die ganze Dexware</h2>
-      <p class="lead">PrüfDex ist Teil der Dexware-Familie — schlanke Apps für Betriebe, Compliance aus einer Hand. Besonders stark im Bundle mit SchutzDex.</p>
-        <a class="promo reveal" href="https://gurtdex.dexware.app" target="_blank" rel="noopener">
-          <img src="assets/gurtdex-icon.png" alt="GurtDex" width="48" height="48" />
-          <span><b>GurtDex</b><span>PSA gegen Absturz prüfen nach DGUV 312-906 / EN 365 — mit Ablegereife-Wächter, Prüfbericht als PDF.</span></span></a>
-        <a class="promo reveal" href="https://toredex.dexware.app" target="_blank" rel="noopener">
-          <img src="assets/toredex-icon.png" alt="ToreDex" width="48" height="48" />
-          <span><b>ToreDex</b><span>Kraftbetätigte Tore &amp; Türen prüfen nach ASR A1.7 / DGUV 208-022.</span></span></a>
-      <div class="promo-list">        <a class="promo reveal" href="https://geruestdex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/geruestdex-icon.png" alt="GerüstDex" /></span>
-          <span class="promo-body">
-            <h3>GerüstDex</h3>
-            <p>Gerüstprüfung nach TRBS 2121-1 — Mängel im Ampelverfahren, Prüfbericht als PDF.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-
-        <a class="promo reveal" href="https://regaldex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/regaldex-icon.png" alt="RegalDex" /></span>
-          <span class="promo-body">
-            <h3>RegalDex</h3>
-            <p>Regalinspektion nach DIN EN 15635 — Schäden im Ampelverfahren, Prüfbericht als PDF.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://leiterdex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/leiterdex-icon.png" alt="LeiterDex" /></span>
-          <span class="promo-body">
-            <h3>LeiterDex</h3>
-            <p>Leitern- &amp; Tritte-Prüfung nach BetrSichV &amp; DGUV 208-016 — Prüfbericht als PDF.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://feuerdex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/feuerdex-icon.png" alt="FeuerDex" /></span>
-          <span class="promo-body">
-            <h3>FeuerDex</h3>
-            <p>Feuerlöscher-Prüfung nach ASR A2.2 &amp; DIN 14406-4 — Prüfbericht als PDF.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://spieldex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/spieldex-icon.png" alt="SpielDex" /></span>
-          <span class="promo-body">
-            <h3>SpielDex</h3>
-            <p>Spielplatzkontrolle nach DIN EN 1176 — Geräte prüfen, Mängel dokumentieren, Kontrollbuch als PDF.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://kfzdex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/kfzdex-icon.png" alt="KfzDex" /></span>
-          <span class="promo-body">
-            <h3>KfzDex</h3>
-            <p>Fuhrpark-Verwaltung — UVV-Prüfung, Führerscheinkontrolle &amp; Fristen prüffest im Griff.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://schutzdex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/schutzheld-icon.png" alt="SchutzDex" /></span>
-          <span class="promo-body">
-            <h3>SchutzDex <span class="soon">Bundle</span></h3>
-            <p>KI-gestützte Arbeitsschutz-Unterweisung mit prüffestem Nachweis und Gefährdungsbeurteilung.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://play.google.com/store/apps/details?id=com.craftlog.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/craftlog-icon.png" alt="CraftDex" /></span>
-          <span class="promo-body">
-            <h3>CraftDex</h3>
-            <p>Die App für Handwerksbetriebe — Aufträge, Zeit und Doku an einem Ort.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://play.google.com/store/apps/details?id=com.baumdex.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/baumdex-icon.png" alt="BaumDex" /></span>
-          <span class="promo-body">
-            <h3>BaumDex</h3>
-            <p>Baumkataster &amp; Verkehrssicherung — Kontrollen lückenlos und rechtssicher dokumentieren.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://winterdex.dexware.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/winterdex-icon.png" alt="WinterDex" /></span>
-          <span class="promo-body">
-            <h3>WinterDex</h3>
-            <p>Winterdienst-Nachweis — Räum- &amp; Streueinsätze gerichtsfest dokumentieren.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://play.google.com/store/apps/details?id=com.routelog.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/routelog-icon.png" alt="TourDex" /></span>
-          <span class="promo-body">
-            <h3>TourDex</h3>
-            <p>Automatisches Fahrtenbuch — Fahrten erkennen und Kilometer rechtssicher dokumentieren.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
-        <a class="promo reveal" href="https://play.google.com/store/apps/details?id=com.archio.app" target="_blank" rel="noopener">
-          <span class="promo-ico"><img src="assets/archio-icon.png" alt="DokuDex" /></span>
-          <span class="promo-body">
-            <h3>DokuDex</h3>
-            <p>Dokumente sicher archivieren und jederzeit wiederfinden.</p>
-          </span>
-          <span class="promo-cta">Zur Website →</span>
-        </a>
+    <section class="soft" id="ablauf">
+      <div class="wrap flow">
+        <div class="rv">
+          <p class="eyebrow">So funktioniert's</p>
+          <h2>Vier Schritte, ein Protokoll</h2>
+          <ol class="steps">
+            <li><b>Scannen</b><p>Gerät per QR-Etikett öffnen oder neu anlegen — Bezeichnung, Typ, Seriennummer, Standort.</p></li>
+            <li><b>Prüfen</b><p>Sichtprüfung abhaken und Messwerte eintragen.</p></li>
+            <li><b>Protokoll</b><p>PDF mit allen Pflichtangaben plus Prüfplakette mit QR-Code.</p></li>
+            <li><b>Frist im Blick</b><p>Nächster Termin wird berechnet — nie wieder eine Wiederholungsprüfung übersehen.</p></li>
+          </ol>
+        </div>
+        <div class="rv"><div class="phone lazy"><div class="screen" style="--bar:#1d4ed8"><img src="assets/shots/ablauf.webp" width="600" height="1107" alt="PrüfDex: Fristen mit überfälligen und bald fälligen Geräten" decoding="async" loading="lazy"></div></div></div>
       </div>
-      <p style="text-align:center;margin-top:24px">
-        <a href="https://dexware.app/" target="_blank" rel="noopener">Alle Dexware-Apps auf einen Blick →</a>
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+    <section id="preise">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="eyebrow">Preise</p>
+          <h2>Kostenlos starten, bei Bedarf upgraden.</h2>
+        </div>
+        <div class="plans">
+          <div class="plan rv">
+            <h3>Free</h3>
+            <p class="price">0 €</p>
+            <p class="per">zum Testen</p>
+            <ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Bis zu 10 Geräte</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Bis zu 10 Prüfungen</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>PDF-Protokoll & Plakette</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Fristen-Übersicht</li></ul>
+          </div>
+          <div class="plan pro rv">
+            <span class="badge">Empfohlen</span>
+            <h3>PrüfDex Pro</h3>
+            <p class="price">14,99 € <small>/ Monat</small></p>
+            <p class="per">oder 119,99 € im Jahr</p>
+            <ul><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Unbegrenzt Geräte & Prüfungen</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Eigenes Branding im Protokoll</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Mehrere Mandanten / Standorte</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Fristen-Erinnerungen</li><li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Voller PDF-Export</li></ul>
+          </div>
+          <div class="plan suite rv">
+            <h3>Dexware Suite</h3>
+            <p class="price">29,99 € <small>/ Monat</small></p>
+            <p class="per">oder 239,99 € im Jahr · entspricht 20 € im Monat</p>
+            <ul>
+              <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Alle 15 Dexware-Apps freigeschaltet</li>
+              <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Neue Apps automatisch dabei</li>
+              <li><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Ein Abo für alle Geräte</li>
+            </ul>
+            <div class="icons" aria-hidden="true"><img src="assets/apps/gurtdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/toredex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/geruestdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/feuerdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/leiterdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/regaldex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/spieldex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/winterdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/kfzdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/pruefdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/schutzdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/baumdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/tourdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/craftdex.webp" alt="" width="26" height="26" loading="lazy" /><img src="assets/apps/dokudex.webp" alt="" width="26" height="26" loading="lazy" /></div>
+          </div>
+        </div>
+        <p class="fine">Abschluss direkt in der App über Google Play · jederzeit kündbar · Preise inkl. MwSt.</p>
+      </div>
+    </section>
+
+    <section class="soft" id="faq">
+      <div class="wrap faq">
+        <div class="rv">
+          <p class="eyebrow">FAQ</p>
+          <h2>Häufige Fragen</h2>
+          <p class="ask"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg><span>Noch etwas offen? <a href="mailto:support@dexware.app?subject=Pr%C3%BCfDex">support@dexware.app</a></span></p>
+        </div>
+        <div class="rv">
+          <details><summary>Wie oft müssen Elektrogeräte geprüft werden?<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary><div class="a">Das legt der Unternehmer in der Gefährdungsbeurteilung fest. Richtwerte der DGUV: Büro bis zu 24 Monate, Werkstatt 6 bis 12 Monate, Baustelle 3 Monate. Mehr im <a href="ratgeber-dguv-v3-prueffristen.html">Ratgeber Prüffristen</a>.</div></details>
+          <details><summary>Wer darf die DGUV-V3-Prüfung durchführen?<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary><div class="a">Eine Elektrofachkraft bzw. eine zur Prüfung befähigte Person nach TRBS 1203, mit geeigneten, kalibrierten Prüfgeräten. Unterwiesene Personen dürfen nur einzelne Handgriffe unter deren Aufsicht übernehmen. PrüfDex dokumentiert die Prüfung und erzeugt Protokoll und Plakette. Mehr im <a href="ratgeber-dguv-v3.html">Ratgeber DGUV V3</a>.</div></details>
+          <details><summary>Eignet sich PrüfDex für Prüfdienstleister?<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary><div class="a">Ja. Mit Pro verwaltest du mehrere Kunden und Standorte getrennt und setzt dein eigenes Branding ins Protokoll.</div></details>
+          <details><summary>Gibt es PrüfDex auch am PC?<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary><div class="a">Ja — im <a href="https://dashboard.dexware.app/app/pruefdex">Dexware-Dashboard</a> siehst du Kunden, Geräte mit Prüffristen-Ampel und Prüflisten-PDF im Browser.</div></details>
+          <details><summary>Wo liegen meine Daten?<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary><div class="a">Auf Servern in der EU. Für die Typenschild-Erkennung wird nur das jeweilige Foto verarbeitet — Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="dexware">
+      <div class="wrap">
+        <div class="family-row rv">
+          <div>
+            <p class="eyebrow">Teil von Dexware</p>
+            <h2>Eine App pro Pflicht.</h2>
+            <p class="lead">PrüfDex gehört zu Dexware — schlanke Apps für Prüfung und Dokumentation im Betrieb.</p>
+          </div>
+          <a href="https://dexware.app/" class="btn ghost sm">Alle Apps ansehen <svg class="i sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+        </div>
+        <div class="family rv">
+          <a href="https://gurtdex.dexware.app"><img src="assets/apps/gurtdex.webp" alt="" width="44" height="44" loading="lazy" /><b>GurtDex</b><small>PSA gegen Absturz</small></a>
+          <a href="https://toredex.dexware.app"><img src="assets/apps/toredex.webp" alt="" width="44" height="44" loading="lazy" /><b>ToreDex</b><small>Tore & Türen</small></a>
+          <a href="https://geruestdex.dexware.app"><img src="assets/apps/geruestdex.webp" alt="" width="44" height="44" loading="lazy" /><b>GerüstDex</b><small>Gerüstprüfung</small></a>
+          <a href="https://feuerdex.dexware.app"><img src="assets/apps/feuerdex.webp" alt="" width="44" height="44" loading="lazy" /><b>FeuerDex</b><small>Feuerlöscher</small></a>
+          <a href="https://leiterdex.dexware.app"><img src="assets/apps/leiterdex.webp" alt="" width="44" height="44" loading="lazy" /><b>LeiterDex</b><small>Leitern & Tritte</small></a>
+          <a href="https://regaldex.dexware.app"><img src="assets/apps/regaldex.webp" alt="" width="44" height="44" loading="lazy" /><b>RegalDex</b><small>Regalinspektion</small></a>
+          <a href="https://spieldex.dexware.app"><img src="assets/apps/spieldex.webp" alt="" width="44" height="44" loading="lazy" /><b>SpielDex</b><small>Spielplatzkontrolle</small></a>
+          <a href="https://winterdex.dexware.app"><img src="assets/apps/winterdex.webp" alt="" width="44" height="44" loading="lazy" /><b>WinterDex</b><small>Winterdienst</small></a>
+          <a href="https://kfzdex.dexware.app"><img src="assets/apps/kfzdex.webp" alt="" width="44" height="44" loading="lazy" /><b>KfzDex</b><small>Fuhrpark & UVV</small></a>
+          <a href="https://schutzdex.dexware.app"><img src="assets/apps/schutzdex.webp" alt="" width="44" height="44" loading="lazy" /><b>SchutzDex</b><small>Unterweisungen</small></a>
+          <a href="https://baumdex.dexware.app"><img src="assets/apps/baumdex.webp" alt="" width="44" height="44" loading="lazy" /><b>BaumDex</b><small>Baumkataster</small></a>
+          <a href="https://tourdex.dexware.app"><img src="assets/apps/tourdex.webp" alt="" width="44" height="44" loading="lazy" /><b>TourDex</b><small>Fahrtenbuch</small></a>
+          <a href="https://craftdex.dexware.app"><img src="assets/apps/craftdex.webp" alt="" width="44" height="44" loading="lazy" /><b>CraftDex</b><small>Projekt-Doku</small></a>
+          <a href="https://dokudex.dexware.app"><img src="assets/apps/dokudex.webp" alt="" width="44" height="44" loading="lazy" /><b>DokuDex</b><small>Dokumente & KI</small></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <div class="wrap foot">
-      <span class="muted">© 2026 PrüfDex</span>
-      <span>
-        <a href="ratgeber-dguv-v3.html">Ratgeber</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="agb.html">AGB</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="konto-loeschung.html">Konto löschen</a>
-        <a href="mailto:support@dexware.app">Kontakt</a>
-      </span>
+    <div class="wrap">
+      <span>© 2026 PrüfDex · ein Produkt von <a href="https://dexware.app/">Dexware</a></span>
+      <nav aria-label="Rechtliches"><a href="ratgeber-dguv-v3.html">Ratgeber DGUV V3</a><a href="ratgeber-dguv-v3-prueffristen.html">Prüffristen</a><a href="impressum.html">Impressum</a><a href="agb.html">AGB</a><a href="datenschutz.html">Datenschutz</a><a href="konto-loeschung.html">Konto löschen</a><a href="mailto:support@dexware.app?subject=Pr%C3%BCfDex%20Support">Support</a></nav>
     </div>
   </footer>
 
   <script>
     (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (!('IntersectionObserver' in window)) return;
-      var els = document.querySelectorAll('.reveal');
-      for (var i = 0; i < els.length; i++) els[i].classList.add('pre');
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12 });
-      for (var j = 0; j < els.length; j++) io.observe(els[j]);
+      var top = document.querySelector('.top');
+      var onScroll = function () { top.classList.toggle('scrolled', window.scrollY > 8); };
+      onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+      var els = document.querySelectorAll('.rv');
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(function (e) { e.classList.add('in'); }); return;
+      }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach(function (e) { io.observe(e); });
     })();
   </script>
 </body>
