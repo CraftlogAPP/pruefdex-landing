@@ -74,6 +74,13 @@
         sind Sie als prüfender Betrieb Verantwortlicher, wir verarbeiten sie als Auftragsverarbeiter.</li>
       <li>Fotos: Von Ihnen aufgenommene Bilder (Typenschild, Mängel, Firmenlogo). Sie werden zusammen mit dem
         Gerät bzw. der Prüfung gespeichert und erscheinen im Protokoll.</li>
+      <li>Standort (GPS-Stempel): Beim Durchführen einer Prüfung wird die Geräteposition im Moment der
+        Dokumentation (Beginn und Speichern, jeweils mit Uhrzeit und Genauigkeit) erfasst und mit der Prüfung
+        gespeichert; zusätzlich vergibt der Server einen Eingangszeitstempel und einen Prüfcode (SHA-256), damit
+        das Protokoll nachträglich nicht unbemerkt verändert werden kann. Der Standort wird nur im Vordergrund
+        abgefragt — <strong>keine Hintergrund-Ortung</strong>, keine Bewegungsprofile. Die Berechtigung kann
+        jederzeit in den Systemeinstellungen entzogen werden; die App bleibt nutzbar (Protokoll dann ohne
+        Ortsangabe). Rechtsgrundlage: Art. 6 Abs. 1 lit. b und f DSGVO (rechtssichere Prüfdokumentation).</li>
       <li>Optionale Typenschild-Erkennung („Mit KI ausfüllen"): Wenn Sie diese Funktion aktiv auslösen, wird das
         betreffende Foto an unseren Server und von dort zur Texterkennung an Anthropic (USA) übertragen. Die
         Übertragung erfolgt ausschließlich auf Ihre Auslösung hin; ohne Nutzung dieser Funktion verlässt kein
