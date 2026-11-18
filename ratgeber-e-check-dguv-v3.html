@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E-Check oder DGUV V3? Der Unterschied einfach erklärt | PrüfDex</title>
+  <meta name="description" content="Ist der E-Check Pflicht, ersetzt er die DGUV V3-Prüfung? Unterschied, Prüffristen für Anlagen (4 Jahre) und Geräte, Prüfnormen und Tipps für den Auftrag." />
+  <meta name="robots" content="all" />
+  <meta name="theme-color" content="#0B1220" />
+  <!-- seo:start -->
+  <link rel="icon" type="image/png" href="/assets/pruefdex-icon.png" />
+  <link rel="canonical" href="https://pruefdex.dexware.app/ratgeber-e-check-dguv-v3.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="PrüfDex" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="E-Check oder DGUV V3-Prüfung? Der Unterschied einfach erklärt" />
+  <meta property="og:description" content="Ist der E-Check Pflicht, ersetzt er die DGUV V3-Prüfung? Unterschied, Prüffristen für Anlagen (4 Jahre) und Geräte, Prüfnormen und Tipps für den Auftrag." />
+  <meta property="og:url" content="https://pruefdex.dexware.app/ratgeber-e-check-dguv-v3.html" />
+  <meta property="og:image" content="https://pruefdex.dexware.app/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="E-Check oder DGUV V3-Prüfung? Der Unterschied einfach erklärt" />
+  <meta name="twitter:description" content="Ist der E-Check Pflicht, ersetzt er die DGUV V3-Prüfung? Unterschied, Prüffristen für Anlagen (4 Jahre) und Geräte, Prüfnormen und Tipps für den Auftrag." />
+  <meta name="twitter:image" content="https://pruefdex.dexware.app/assets/og-image.png" />
+  <!-- seo:end -->
+  <style>
+    :root {
+      --bg: #0B1220; --surface: #131C2E; --surface2: #0F1726; --border: #27334A;
+      --text: #E7ECF3; --muted: #9AA7BD;
+      --blue: #2563EB; --blue2: #5B8DF7; --glow: rgba(37,99,235,.18);
+      --green: #22C55E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(1100px 620px at 50% -140px, rgba(37,99,235,.22), transparent 65%),
+        radial-gradient(800px 520px at 92% 10%, rgba(91,141,247,.12), transparent 62%),
+        radial-gradient(800px 520px at 8% 60%, rgba(37,99,235,.08), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
+      mask-image: radial-gradient(900px 620px at 50% 0%, #000 25%, transparent 75%);
+    }
+    a { color: #8FB4FF; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+    /* Sticky glass header */
+    .sitehead {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11,18,32,.72);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .sitehead .wrap { max-width: 1000px; }
+    header { padding: 14px 0; display: flex; align-items: center; gap: 12px; }
+    .logo { width: 38px; height: 38px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(8,16,40,.5); }
+    .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+    .nav-spacer { flex: 1; }
+    .nav a { color: var(--muted); font-size: 14px; margin-left: 20px; }
+    .nav a:hover { color: var(--text); text-decoration: none; }
+    @media (max-width: 640px) { .nav a:not(.nav-cta) { display: none; } }
+
+    /* Article */
+    article { padding: 48px 0 8px; }
+    .kicker { color: var(--blue2); font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px; }
+    h1 {
+      font-size: clamp(28px, 4.8vw, 42px); font-weight: 850; letter-spacing: -1px; line-height: 1.14;
+      margin-bottom: 18px;
+    }
+    h1 .hl { background: linear-gradient(120deg, #9DC0FF, var(--blue2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .meta { color: var(--muted); font-size: 13.5px; margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 22px; }
+    article h2 { font-size: clamp(21px, 3.4vw, 27px); font-weight: 850; letter-spacing: -0.5px; margin: 40px 0 12px; }
+    article h3 { font-size: 18px; font-weight: 750; margin: 26px 0 8px; }
+    article p { color: #D3DBE8; font-size: 16px; margin-bottom: 14px; }
+    article ul, article ol { margin: 0 0 16px 0; padding-left: 4px; list-style: none; }
+    article li { color: #D3DBE8; font-size: 15.5px; padding: 6px 0 6px 26px; position: relative; }
+    article ul li::before { content: "✓"; color: var(--green); position: absolute; left: 0; font-weight: 800; }
+    article ol { counter-reset: step; }
+    article ol li { counter-increment: step; }
+    article ol li::before { content: counter(step); color: var(--blue2); font-weight: 800; position: absolute; left: 0; font-size: 13.5px; top: 8px; }
+    article b, article strong { color: var(--text); font-weight: 700; }
+    .lead { font-size: 18px; color: var(--muted); margin: 22px 0 8px; }
+
+    /* Callout / note box */
+    .note {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; margin: 22px 0;
+    }
+    .note::before { content: ''; position: absolute; inset: 0;
+      background: radial-gradient(300px 140px at 100% 0%, var(--glow), transparent 70%); opacity: .8; }
+    .note > * { position: relative; }
+    .note .nh { font-weight: 750; font-size: 15px; margin-bottom: 6px; color: var(--text); }
+    .note p { font-size: 14.5px; margin-bottom: 0; color: var(--muted); }
+
+    /* Table */
+    .tablewrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: 16px; }
+    table { width: 100%; border-collapse: collapse; min-width: 460px; }
+    th, td { text-align: left; padding: 13px 16px; font-size: 14.5px; border-bottom: 1px solid var(--border); }
+    th { background: rgba(37,99,235,.10); color: var(--text); font-weight: 750; font-size: 13px; letter-spacing: .3px; }
+    td { color: #D3DBE8; }
+    tr:last-child td { border-bottom: none; }
+    td b { color: var(--blue2); }
+
+    /* FAQ */
+    .faq { margin-top: 8px; }
+    .faq details {
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border); border-radius: 14px; padding: 4px 20px; margin-bottom: 12px;
+    }
+    .faq summary { cursor: pointer; font-weight: 700; font-size: 16px; padding: 16px 0; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--blue2); font-size: 22px; font-weight: 400; flex-shrink: 0; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { color: var(--muted); font-size: 15px; padding: 0 0 18px; margin: 0; }
+
+    /* CTA band */
+    .band { background: linear-gradient(135deg, #1b2c4d, #101a2c); border: 1px solid rgba(91,141,247,.35);
+      border-radius: 22px; padding: 40px 30px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.4); margin: 44px 0 8px; }
+    .band h2 { margin: 0 0 10px; }
+    .band p { color: var(--muted); margin-bottom: 22px; }
+    .btnrow { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; font-size: 15.5px; font-weight: 650; padding: 14px 26px;
+      border-radius: 12px; border: 1px solid transparent; cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--blue2), var(--blue)); color: #fff;
+      box-shadow: 0 10px 30px rgba(37,99,235,.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(37,99,235,.45); text-decoration: none; }
+    .btn-ghost { background: rgba(255,255,255,.03); color: var(--text); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--blue2); text-decoration: none; }
+    .nav-cta { color: var(--blue2) !important; font-weight: 700; }
+
+    .disclaimer { color: var(--muted); font-size: 12.5px; margin: 28px 0 0; }
+    .backlink { display: inline-block; margin: 30px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 28px 0 48px; }
+    footer .wrap { max-width: 1000px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .foot .muted { color: var(--muted); font-size: 13px; }
+    .foot a { color: var(--muted); font-size: 13px; margin-left: 18px; }
+  </style>
+
+
+  <style>
+    /* Ratgeber-Ergänzungen (Tabelle, Kurzantwort, Quellen) — neutral, passt zu hellem und dunklem Design */
+    .rg-scroll { overflow-x: auto; margin: 10px 0 22px; -webkit-overflow-scrolling: touch; }
+    .rg-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; min-width: 520px; }
+    .rg-table th, .rg-table td { border: 1px solid rgba(127,127,127,.32); padding: 9px 11px; text-align: left; vertical-align: top; }
+    .rg-table th { background: rgba(127,127,127,.12); font-weight: 800; }
+    .rg-kurz { border: 1px solid rgba(127,127,127,.35); border-radius: 12px; padding: 16px 18px; margin: 18px 0 24px; background: rgba(127,127,127,.07); }
+    .rg-kurz > b:first-child { display: block; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; opacity: .8; }
+    .rg-kurz ul { margin: 6px 0 0; padding-left: 20px; }
+    .rg-kurz li { margin-bottom: 5px; }
+    .rg-quellen { font-size: 14px; opacity: .9; }
+    .rg-quellen li { font-size: 14px !important; margin-bottom: 4px; }
+    .rg-weiter { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin: 12px 0 26px; }
+    .rg-weiter a { display: block; border: 1px solid rgba(127,127,127,.35); border-radius: 10px; padding: 12px 14px; text-decoration: none; font-weight: 700; }
+    .rg-weiter a span { display: block; font-weight: 400; font-size: 13.5px; opacity: .75; margin-top: 2px; }
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"E-Check oder DGUV V3-Prüfung? Der Unterschied einfach erklärt","description":"Ist der E-Check Pflicht, ersetzt er die DGUV V3-Prüfung? Unterschied, Prüffristen für Anlagen (4 Jahre) und Geräte, Prüfnormen und Tipps für den Auftrag.","inLanguage":"de","datePublished":"2026-11-19","dateModified":"2026-11-19","author":{"@type":"Organization","name":"Dexware","url":"https://dexware.app/"},"publisher":{"@type":"Organization","name":"Dexware","url":"https://dexware.app/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://pruefdex.dexware.app/ratgeber-e-check-dguv-v3.html"},"image":"https://pruefdex.dexware.app/assets/og-image.png"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"PrüfDex","item":"https://pruefdex.dexware.app/"},{"@type":"ListItem","position":2,"name":"Ratgeber","item":"https://dexware.app/ratgeber.html"},{"@type":"ListItem","position":3,"name":"E-Check oder DGUV V3","item":"https://pruefdex.dexware.app/ratgeber-e-check-dguv-v3.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ist der E-Check Pflicht?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der E-Check ist kein Gesetz, sondern ein Prüfsiegel der Innungsfachbetriebe des Elektrohandwerks. Pflicht ist für Betriebe die Prüfung der elektrischen Anlagen und Betriebsmittel nach BetrSichV und DGUV Vorschrift 3. Ein E-Check kann diese Pflicht erfüllen, wenn Umfang, Normen und Fristen passen."}},{"@type":"Question","name":"Ersetzt ein E-Check die DGUV V3-Prüfung?","acceptedAnswer":{"@type":"Answer","text":"Er kann sie ersetzen, wenn er alle Anlagen und Geräte umfasst, die nach DGUV Vorschrift 3 zu prüfen sind, nach den einschlägigen Normen durchgeführt wird, die betrieblich festgelegten Fristen einhält und vollständig dokumentiert ist. Darauf sollte der Auftrag ausdrücklich hinweisen."}},{"@type":"Question","name":"Wie oft muss die ortsfeste Elektroanlage geprüft werden?","acceptedAnswer":{"@type":"Answer","text":"Der Richtwert der DGUV Vorschrift 3 für ortsfeste elektrische Anlagen und Betriebsmittel liegt bei 4 Jahren, für Anlagen in Räumen besonderer Art bei 1 Jahr. Die tatsächliche Frist legt der Unternehmer in der Gefährdungsbeurteilung fest."}},{"@type":"Question","name":"Wie oft müssen ortsveränderliche Geräte geprüft werden?","acceptedAnswer":{"@type":"Answer","text":"Der Richtwert der DGUV Vorschrift 3 liegt bei 6 Monaten, auf Baustellen bei 3 Monaten. Liegt die Fehlerquote unter 2 %, kann die Frist verlängert werden, in Werkstätten bis zu 1 Jahr, in Büros bis zu 2 Jahre. Details stehen im Ratgeber zu den DGUV V3-Prüffristen."}},{"@type":"Question","name":"Wer darf die Prüfung durchführen?","acceptedAnswer":{"@type":"Answer","text":"Eine Elektrofachkraft bzw. eine zur Prüfung befähigte Person nach TRBS 1203 mit geeigneten Messgeräten. Für einzelne Prüfungen ortsveränderlicher Geräte kann auch eine elektrotechnisch unterwiesene Person unter Leitung und Aufsicht einer Elektrofachkraft tätig werden."}},{"@type":"Question","name":"Gibt es den E-Check auch in Österreich?","acceptedAnswer":{"@type":"Answer","text":"Die DGUV Vorschrift 3 und der deutsche E-Check gelten in Österreich nicht. Dort regeln u. a. die Elektroschutzverordnung 2012 und die ÖVE-Normen die Prüfung elektrischer Anlagen."}}]}</script>
+</head>
+<body>
+  <div class="sitehead">
+    <div class="wrap">
+      <header>
+        <a href="index.html" class="logo"><img src="assets/pruefdex-icon.png" alt="PrüfDex" /></a>
+        <span class="brand">PrüfDex</span>
+        <span class="nav-spacer"></span>
+        <nav class="nav">
+          <a href="index.html#so">So funktioniert's</a>
+          <a href="index.html#preise">Preise</a>
+          <a href="ratgeber-dguv-v3.html" class="nav-cta">Ratgeber</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article>
+      <div class="kicker">Ratgeber · DGUV Vorschrift 3 · E-Check</div>
+      <h1>E-Check oder DGUV V3? <span class="hl">Der Unterschied einfach erklärt</span></h1>
+      <p class="land-hinweis" style="margin:16px 0 20px;padding:12px 16px;border:1px solid rgba(127,127,127,.35);border-radius:12px;font-size:14.5px;line-height:1.55"><strong>Gilt für welches Land?</strong> Die DGUV Vorschrift 3 und der E-Check gelten in <strong>Deutschland</strong>. In <strong>Österreich</strong> gelten u. a. die Elektroschutzverordnung 2012 (ESV 2012) und die ÖVE-Normen, in der <strong>Schweiz</strong> die Niederspannungs-Installationsverordnung (NIV) sowie VUV und Vorgaben der Suva — jeweils mit eigenen Begriffen und Fristen.</p>
+      <p class="meta">Praxisleitfaden für Betriebe, Hausverwaltungen und Elektro-Handwerk · Stand: November 2026 · Lesezeit ca. 5 Minuten</p>
+
+      <p class="lead">
+        „Wir brauchen den E-Check“ — „Nein, die DGUV V3-Prüfung“: Beides wird oft durcheinandergeworfen. Kurz gesagt
+        ist die <strong>DGUV Vorschrift 3 die Pflicht</strong> und der <strong>E-Check eine Art, sie zu erfüllen</strong>.
+        Worauf es dabei ankommt, steht hier.
+      </p>
+
+      <div class="rg-kurz"><b>Die Antwort in Kürze</b>
+  <ul>
+    <li><strong>DGUV Vorschrift 3</strong> (mit BetrSichV): Unfallverhütungsvorschrift, die Betriebe zur regelmäßigen Prüfung elektrischer Anlagen und Betriebsmittel verpflichtet.</li>
+    <li><strong>E-Check</strong>: Prüfsiegel und Dienstleistung der Innungsfachbetriebe des Elektrohandwerks — kein Gesetz, keine eigene Pflicht.</li>
+    <li>Ein E-Check <strong>erfüllt die DGUV V3-Pflicht</strong>, wenn er alle prüfpflichtigen Anlagen und Geräte umfasst, nach den Normen geprüft wird, die Fristen passen und alles dokumentiert ist.</li>
+    <li>Richtwerte: <strong>ortsfeste Anlagen 4 Jahre</strong>, ortsveränderliche Geräte je nach Einsatz 3 bis 24 Monate.</li>
+  </ul>
+</div>
+
+      <h2>Was ist was?</h2>
+      <p>
+        Die <strong>DGUV Vorschrift 3</strong> „Elektrische Anlagen und Betriebsmittel“ ist eine
+        Unfallverhütungsvorschrift der gesetzlichen Unfallversicherung. Zusammen mit der
+        Betriebssicherheitsverordnung verpflichtet sie den Unternehmer, elektrische Anlagen und Betriebsmittel
+        vor der ersten Inbetriebnahme und danach in bestimmten Zeitabständen durch eine Elektrofachkraft prüfen zu
+        lassen.
+      </p>
+      <p>
+        Der <strong>E-Check</strong> ist ein Prüfsiegel der Innungsfachbetriebe der Elektrohandwerke. Er wird für
+        Privathaushalte, Vermieter und Betriebe angeboten. Für Betriebe gibt es ihn in Varianten, die ausdrücklich
+        auf die Anforderungen der DGUV Vorschrift 3 ausgerichtet sind. Entscheidend ist also nicht das Siegel,
+        sondern <strong>was geprüft und wie es dokumentiert wird</strong>.
+      </p>
+
+      <h2>Richtwerte der DGUV Vorschrift 3 für ortsfeste Anlagen</h2>
+      <p>Die Durchführungsanweisungen zur DGUV Vorschrift 3 nennen für ortsfeste Anlagen diese Richtwerte:</p>
+<div class="tablewrap">
+  <table>
+    <thead><tr><th>Anlage / Betriebsmittel</th><th>Richtwert</th><th>Wer prüft</th></tr></thead>
+    <tbody>
+      <tr><td>Elektrische Anlagen und ortsfeste Betriebsmittel</td><td>4 Jahre</td><td>Elektrofachkraft</td></tr>
+      <tr><td>Anlagen in „Betriebsstätten, Räumen und Anlagen besonderer Art“ (DIN VDE 0100 Gruppe 700)</td><td>1 Jahr</td><td>Elektrofachkraft</td></tr>
+      <tr><td>Schutzmaßnahmen mit Fehlerstrom-Schutzeinrichtungen in nichtstationären Anlagen</td><td>1 Monat</td><td>Elektrofachkraft oder unterwiesene Person mit geeigneten Messgeräten</td></tr>
+      <tr><td>FI-/RCD-Schutzschalter: Prüftaste</td><td>stationär 6 Monate, nichtstationär arbeitstäglich</td><td>Benutzer</td></tr>
+    </tbody>
+  </table>
+</div>
+      <p>
+        Für ortsveränderliche Geräte (Verlängerungen, Werkzeuge, Ladegeräte, Kaffeemaschine) gelten eigene
+        Richtwerte je Einsatzumgebung — siehe <a href="ratgeber-dguv-v3-prueffristen.html">DGUV V3 Prüffristen</a>.
+        Richtwerte sind keine starren Gesetzesfristen: Die tatsächliche Frist legt der Unternehmer in der
+        Gefährdungsbeurteilung fest.
+      </p>
+
+      <h2>Nach welchen Normen wird geprüft?</h2>
+      <ul>
+        <li><strong>Ortsfeste Anlagen:</strong> Wiederholungsprüfung nach DIN VDE 0105-100 (Betrieb von elektrischen Anlagen).</li>
+        <li><strong>Ortsveränderliche Geräte:</strong> Prüfung nach Instandsetzung und Wiederholungsprüfung nach DIN EN 50678 (VDE 0701) bzw. DIN EN 50699 (VDE 0702), den Nachfolgern der früheren DIN VDE 0701-0702.</li>
+      </ul>
+
+      <div class="note">
+        <div class="nh">Checkliste für den Auftrag an den Elektrobetrieb</div>
+        <p>
+          Egal ob E-Check oder „DGUV V3-Prüfung“ auf dem Angebot steht: Klären Sie vorab, <b>welche Anlagen und
+          Geräte</b> geprüft werden (ortsfest und ortsveränderlich?), <b>nach welchen Normen</b>, ob die
+          <b>Fristen</b> aus Ihrer Gefährdungsbeurteilung berücksichtigt werden und ob Sie ein <b>Prüfprotokoll je
+          Anlage und Gerät</b> mit Messwerten und Ergebnis bekommen. Ein Siegel allein ist kein Nachweis.
+        </p>
+      </div>
+
+      <h2>Warum die Dokumentation entscheidet</h2>
+      <p>
+        Nach einem Unfall oder Brand fragen Berufsgenossenschaft, Versicherer oder Staatsanwaltschaft nach dem
+        Nachweis, dass <strong>genau dieses Gerät</strong> fristgerecht geprüft wurde. Gebraucht werden: Gerät bzw.
+        Anlage, Datum, Prüfer, Prüfnorm, Messwerte, Ergebnis und nächster Termin. Fehlt das, gilt die Prüfung im
+        Zweifel als nicht erfolgt — unabhängig davon, welches Siegel klebt.
+      </p>
+
+      <h2>Quellen</h2>
+<ul class="rg-quellen">
+  <li>DGUV Vorschrift 3 „Elektrische Anlagen und Betriebsmittel“ mit Durchführungsanweisungen (Tabellen 1A und 1B)</li>
+  <li>Betriebssicherheitsverordnung (BetrSichV), TRBS 1201 und TRBS 1203</li>
+  <li>DIN VDE 0105-100; DIN EN 50678 (VDE 0701); DIN EN 50699 (VDE 0702)</li>
+</ul>
+
+      <div class="band">
+        <h2>Geräteprüfungen nachvollziehbar dokumentieren</h2>
+        <p>
+          PrüfDex führt den Gerätebestand mit Fristen je Einsatzumgebung, dokumentiert jede Prüfung ortsveränderlicher
+          Geräte mit Protokoll und Plakette und erinnert an Fälligkeiten. Messen und bewerten muss die Elektrofachkraft.
+        </p>
+        <div class="btnrow">
+          <a href="https://play.google.com/store/apps/details?id=de.pruefdex.app" target="_blank" rel="noopener" class="btn btn-primary">PrüfDex im Play Store →</a>
+          <a href="index.html" class="btn btn-ghost">Mehr über PrüfDex</a>
+        </div>
+      </div>
+
+      <h2>Häufige Fragen: E-Check und DGUV V3</h2>
+      <div class="faq">
+        <details>
+          <summary>Ist der E-Check Pflicht?</summary>
+          <p>Nein. Der E-Check ist kein Gesetz, sondern ein Prüfsiegel der Innungsfachbetriebe des Elektrohandwerks. Pflicht ist für Betriebe die Prüfung der elektrischen Anlagen und Betriebsmittel nach BetrSichV und DGUV Vorschrift 3. Ein E-Check kann diese Pflicht erfüllen, wenn Umfang, Normen und Fristen passen.</p>
+        </details>
+        <details>
+          <summary>Ersetzt ein E-Check die DGUV V3-Prüfung?</summary>
+          <p>Er kann sie ersetzen, wenn er alle Anlagen und Geräte umfasst, die nach DGUV Vorschrift 3 zu prüfen sind, nach den einschlägigen Normen durchgeführt wird, die betrieblich festgelegten Fristen einhält und vollständig dokumentiert ist. Darauf sollte der Auftrag ausdrücklich hinweisen.</p>
+        </details>
+        <details>
+          <summary>Wie oft muss die ortsfeste Elektroanlage geprüft werden?</summary>
+          <p>Der Richtwert der DGUV Vorschrift 3 für ortsfeste elektrische Anlagen und Betriebsmittel liegt bei 4 Jahren, für Anlagen in Räumen besonderer Art bei 1 Jahr. Die tatsächliche Frist legt der Unternehmer in der Gefährdungsbeurteilung fest.</p>
+        </details>
+        <details>
+          <summary>Wie oft müssen ortsveränderliche Geräte geprüft werden?</summary>
+          <p>Der Richtwert der DGUV Vorschrift 3 liegt bei 6 Monaten, auf Baustellen bei 3 Monaten. Liegt die Fehlerquote unter 2 %, kann die Frist verlängert werden, in Werkstätten bis zu 1 Jahr, in Büros bis zu 2 Jahre. Details stehen im Ratgeber zu den DGUV V3-Prüffristen.</p>
+        </details>
+        <details>
+          <summary>Wer darf die Prüfung durchführen?</summary>
+          <p>Eine Elektrofachkraft bzw. eine zur Prüfung befähigte Person nach TRBS 1203 mit geeigneten Messgeräten. Für einzelne Prüfungen ortsveränderlicher Geräte kann auch eine elektrotechnisch unterwiesene Person unter Leitung und Aufsicht einer Elektrofachkraft tätig werden.</p>
+        </details>
+        <details>
+          <summary>Gibt es den E-Check auch in Österreich?</summary>
+          <p>Die DGUV Vorschrift 3 und der deutsche E-Check gelten in Österreich nicht. Dort regeln u. a. die Elektroschutzverordnung 2012 und die ÖVE-Normen die Prüfung elektrischer Anlagen.</p>
+        </details>
+      </div>
+
+<div class="rg-weiter">
+  <a href="ratgeber-dguv-v3.html">DGUV V3 Prüfung ortsveränderlicher Geräte<span>Ablauf, Messwerte, Protokoll</span></a>
+  <a href="ratgeber-dguv-v3-prueffristen.html">DGUV V3 Prüffristen<span>Richtwerte je Einsatzumgebung</span></a>
+  <a href="https://dexware.app/ratgeber.html">Alle Ratgeber<span>Prüfpflichten und Fristen im Überblick</span></a>
+</div>
+
+      <p class="disclaimer">
+        Dieser Ratgeber gibt einen allgemeinen Überblick (Stand 11/2026) und ersetzt keine Rechtsberatung und keine
+        Gefährdungsbeurteilung im Einzelfall. Maßgeblich sind die aktuellen Fassungen von BetrSichV, DGUV Vorschrift 3
+        und den genannten Normen. „E-Check“ ist ein Siegel der Elektrohandwerke; PrüfDex steht in keiner Verbindung dazu.
+      </p>
+
+      <a class="backlink" href="ratgeber-dguv-v3.html">← Zurück zum Grundlagen-Ratgeber DGUV V3</a><br />
+      <a class="backlink" href="index.html">← Zurück zur Startseite</a>
+    </article>
+  </div>
+
+  <footer>
+    <div class="wrap foot">
+      <span class="muted">© 2026 PrüfDex</span>
+      <span>
+        <a href="ratgeber-dguv-v3.html">Ratgeber</a>
+        <a href="ratgeber-e-check-dguv-v3.html">E-Check oder DGUV V3</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="agb.html">AGB</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="konto-loeschung.html">Konto löschen</a>
+        <a href="mailto:support@dexware.app">Kontakt</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
