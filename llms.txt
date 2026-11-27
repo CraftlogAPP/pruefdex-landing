@@ -1,0 +1,69 @@
+# PrüfDex
+
+> PrüfDex ist eine App von Dexware. DGUV V3 Software fürs Handy: Elektrogeräte per QR erfassen, Prüfung nach VDE 0702 mit Messwerten, Prüfplakette, PDF-Protokoll und Erinnerung an die Frist. Android-App bei Google Play, am iPhone im Browser. Gratis: Bis zu 3 Geräte; Pro 14,99 € im Monat oder 119,99 € im Jahr.
+
+Sachliche Kurzinfo für Sprachmodelle und Suchdienste. Maßgeblich sind die Angaben auf https://pruefdex.dexware.app/. Anbieter: Dexware (https://dexware.app/), Kontakt: support@dexware.app.
+
+## Was PrüfDex macht
+
+- QR-Plakette und Typenschild: Jedes Gerät bekommt sein Etikett, die nächste Prüfung ist ein Scan entfernt. Ein Foto vom Typenschild füllt Hersteller, Typ und Seriennummer aus.
+- Prüfung nach VDE 0702: Sichtprüfung abhaken, Schutzleiter-, Isolationswiderstand und Ersatzableitstrom eintragen. PDF mit allen DGUV-V3-Pflichtangaben und Prüfplakette entstehen automatisch.
+- Fristen und Mandanten: Der nächste Prüftermin wird berechnet, Überfälliges siehst du sofort. Mehrere Kunden bleiben getrennt, je Gerät mit Standort-Notiz. Mit Pro trägt jedes Protokoll dein Logo.
+
+## Am PC im Dexware-Dashboard
+
+Was du mit PrüfDex prüfst, siehst du im Dexware-Dashboard am Computer — je Kunde und Standort, mit demselben Konto.
+
+- Überfällig und bald fällig: Die Übersicht zählt beides und listet die fälligen Prüfungen mit Kunde und letzter Prüfung.
+- Geräteliste mit Ampel: Sortiert nach Fälligkeit, mit QR-Etikett, Schutzklasse und Kunde, filterbar nach Kunde und Fälligkeit.
+- Prüflisten-PDF: Geräte mit Prüfstatus je Kunde oder Standort. Die Einzelprotokolle erzeugt die App.
+- Excel rein und raus: Geräteliste einlesen und ausgeben, Prüfungen mit Messwerten und Summen je Kunde zum Abrechnen.
+
+## Für wen
+
+Für Elektro-Handwerk und Prüfdienstleister in Deutschland.
+
+## Preise
+
+- Gratis (zum Testen): Bis zu 3 Geräte; Bis zu 5 Prüfungen; PDF-Protokoll & Plakette; Fristen-Übersicht und Erinnerungen
+- Pro: 14,99 € im Monat oder 119,99 € im Jahr. Enthält: Unbegrenzt Geräte & Prüfungen; Eigenes Branding im Protokoll und auf der Plakette; Team mit bis zu 20 Prüfern; Alles aus Free
+- Stufen nach Teamgröße (ein Abo pro Betrieb, Prüfer treten per Team-Code bei und brauchen kein eigenes Abo):
+  - Pro (bis 20 Prüfer): 14,99 € im Monat · 119,99 € im Jahr
+  - Team (bis 50 Prüfer): 19,99 € im Monat · 159,99 € im Jahr
+  - Team XL (bis 100 Prüfer): 24,99 € im Monat · 199,99 € im Jahr
+  - Unternehmen (über 100 Prüfer): Angebot · auf Rechnung
+- Dexware Suite (Prüf-Paket): alle 9 Prüf-Apps der Suite (GurtDex, ToreDex, GerüstDex, FeuerDex, LeiterDex, RegalDex, PrüfDex, SchutzDex, HebeDex) für 24,99 € im Monat oder 199,99 € im Jahr (entspricht 16,67 € im Monat), ab 3 Prüf-Apps günstiger als einzeln.
+- Preise inkl. MwSt., Abo jederzeit kündbar.
+
+## Kurz beantwortet
+
+- Was sollte eine DGUV-V3-Software können? Geräte eindeutig erfassen, Sichtprüfung und Messwerte nach VDE 0702 aufnehmen, ein Protokoll mit allen Pflichtangaben erzeugen und die nächste Frist berechnen.
+- Wie oft müssen Elektrogeräte geprüft werden? Das legt der Unternehmer in der Gefährdungsbeurteilung fest. Richtwert der DGUV Vorschrift 3: 6 Monate, auf Baustellen 3 Monate. Bei einer Fehlerquote unter 2 % ist eine Verlängerung möglich, höchstens auf 12 Monate (Werkstatt, Baustelle) oder 24 Monate (Büro).
+- Wer darf die DGUV-V3-Prüfung durchführen? Eine Elektrofachkraft bzw. eine zur Prüfung befähigte Person nach TRBS 1203, mit geeigneten, kalibrierten Prüfgeräten. Unterwiesene Personen dürfen nur einzelne Handgriffe unter deren Aufsicht übernehmen.
+- Ersetzt ein E-Check die DGUV-V3-Prüfung? Er kann sie ersetzen, wenn er alle prüfpflichtigen Anlagen und Geräte umfasst, nach den Normen geprüft wird, die Fristen passen und alles dokumentiert ist.
+- Gibt es PrüfDex auch am PC? Ja — im Dexware-Dashboard siehst du Kunden, Geräte mit Prüffristen-Ampel und Prüflisten-PDF im Browser.
+- Wo liegen meine Daten? Auf Servern in der EU. Nur wenn du die Typenschild-Erkennung auslöst, geht das eine Foto zur Texterkennung an einen KI-Dienst in den USA. Details in der Datenschutzerklärung.
+- Alle Antworten: https://pruefdex.dexware.app/#faq
+
+## Seiten
+
+- [Startseite](https://pruefdex.dexware.app/): Funktionen, Preise, häufige Fragen
+- [Preise](https://pruefdex.dexware.app/#preise): Gratis, Pro und Stufen nach Teamgröße
+- [Häufige Fragen](https://pruefdex.dexware.app/#faq)
+- [PrüfDex am iPhone](https://pruefdex.dexware.app/#iphone): im Browser, ohne App Store
+- [Dexware-Dashboard](https://dashboard.dexware.app/app/pruefdex): am PC im Browser, mit demselben Konto
+- [Google Play](https://play.google.com/store/apps/details?id=de.pruefdex.app): Android-App
+- [Dexware](https://dexware.app/): alle Apps von Dexware
+
+## Ratgeber
+
+- [DGUV V3 Prüffristen: Richtwerte je Einsatzumgebung (Tabelle)](https://pruefdex.dexware.app/ratgeber-dguv-v3-prueffristen.html): DGUV V3 Prüffristen im Überblick: Richtwert 6 Monate, Baustelle 3 Monate; bei Fehlerquote unter 2 % bis 12 Monate (Werkstatt) oder 24 Monate (Büro). Wer die Frist festlegt, wann sie verlängert werden darf und was bei versäumter Frist zu tun ist.
+- [DGUV V3 Prüfung: Fristen, Messwerte, Protokoll](https://pruefdex.dexware.app/ratgeber-dguv-v3.html): DGUV V3 Prüfung ortsveränderlicher elektrischer Geräte: Wer prüfen muss, Prüffristen (Richtwert 6 Monate, Baustelle 3 Monate, im Büro bis 24 Monate), Ablauf nach VDE 0702 (DIN EN 50699), Prüfprotokoll, Plakette und Haftung. Praxis-Ratgeber für Betriebe.
+- [E-Check oder DGUV V3? Der Unterschied einfach erklärt](https://pruefdex.dexware.app/ratgeber-e-check-dguv-v3.html): Ist der E-Check Pflicht, ersetzt er die DGUV V3-Prüfung? Unterschied, Prüffristen für Anlagen (4 Jahre) und Geräte, Prüfnormen und Tipps für den Auftrag.
+
+## Rechtliches
+
+- [Impressum](https://pruefdex.dexware.app/impressum.html)
+- [Datenschutz](https://pruefdex.dexware.app/datenschutz.html)
+- [AGB](https://pruefdex.dexware.app/agb.html)
+- [AVV](https://pruefdex.dexware.app/avv.html)
