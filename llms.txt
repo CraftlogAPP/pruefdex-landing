@@ -35,6 +35,13 @@ Für Elektro-Handwerk und Prüfdienstleister in Deutschland.
 - Dexware Suite (Prüf-Paket): alle 9 Prüf-Apps der Suite (GurtDex, ToreDex, GerüstDex, FeuerDex, LeiterDex, RegalDex, PrüfDex, SchutzDex, HebeDex) für 24,99 € im Monat oder 199,99 € im Jahr (entspricht 16,67 € im Monat), ab 3 Prüf-Apps günstiger als einzeln.
 - Preise inkl. MwSt., Abo jederzeit kündbar.
 
+## Was PrüfDex nicht ist
+
+- Kein Ersatz für die befähigte Person bzw. Elektrofachkraft: PrüfDex unterstützt ausschließlich bei der Dokumentation und ersetzt keine fachliche Beurteilung. Die fachgerechte Prüfung obliegt der prüfenden, befähigten Person.
+- Kein Messgerät: PrüfDex erzeugt keine eigenen Messwerte; Mess- und Sichtergebnisse gibt die prüfende Person ein.
+- Keine Rechtsberatung: Die Ratgeber von PrüfDex geben die Vorschriften allgemein verständlich wieder und ersetzen keine Rechtsberatung.
+- Eine iPhone-App im App Store gibt es noch nicht; am iPhone und iPad läuft PrüfDex im Browser (Geräte prüfen — Sichtprüfung, Messwerte mit automatischer Bewertung, Unterschrift). Das PDF-Protokoll je Prüfung, Prüfplakette und QR-Scan gibt es vorerst nur in der Android-App.
+
 ## Kurz beantwortet
 
 - Was sollte eine DGUV-V3-Software können? Geräte eindeutig erfassen, Sichtprüfung und Messwerte nach VDE 0702 aufnehmen, ein Protokoll mit allen Pflichtangaben erzeugen und die nächste Frist berechnen.
