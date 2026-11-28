@@ -64,8 +64,8 @@ Für Elektro-Handwerk und Prüfdienstleister in Deutschland.
 
 ## Ratgeber
 
-- [DGUV V3 Prüffristen: Richtwerte je Einsatzumgebung (Tabelle)](https://pruefdex.dexware.app/ratgeber-dguv-v3-prueffristen.html): DGUV V3 Prüffristen im Überblick: Richtwert 6 Monate, Baustelle 3 Monate; bei Fehlerquote unter 2 % bis 12 Monate (Werkstatt) oder 24 Monate (Büro). Wer die Frist festlegt, wann sie verlängert werden darf und was bei versäumter Frist zu tun ist.
-- [DGUV V3 Prüfung: Fristen, Messwerte, Protokoll](https://pruefdex.dexware.app/ratgeber-dguv-v3.html): DGUV V3 Prüfung ortsveränderlicher elektrischer Geräte: Wer prüfen muss, Prüffristen (Richtwert 6 Monate, Baustelle 3 Monate, im Büro bis 24 Monate), Ablauf nach VDE 0702 (DIN EN 50699), Prüfprotokoll, Plakette und Haftung. Praxis-Ratgeber für Betriebe.
+- [DGUV V3 Prüffristen: Richtwerte als Tabelle](https://pruefdex.dexware.app/ratgeber-dguv-v3-prueffristen.html): DGUV V3 Prüffristen: Richtwert 6 Monate, Baustelle 3; bei Fehlerquote unter 2 % bis 12 (Werkstatt) oder 24 Monate (Büro). Wer die Frist festlegt.
+- [DGUV V3 Prüfung: Fristen, Messwerte, Protokoll](https://pruefdex.dexware.app/ratgeber-dguv-v3.html): DGUV V3 Prüfung ortsveränderlicher Geräte: wer prüft, Fristen (Richtwert 6 Monate, Baustelle 3, Büro bis 24), Ablauf nach VDE 0702, Protokoll, Haftung.
 - [E-Check oder DGUV V3? Der Unterschied einfach erklärt](https://pruefdex.dexware.app/ratgeber-e-check-dguv-v3.html): Ist der E-Check Pflicht, ersetzt er die DGUV V3-Prüfung? Unterschied, Prüffristen für Anlagen (4 Jahre) und Geräte, Prüfnormen und Tipps für den Auftrag.
 
 ## Rechtliches
